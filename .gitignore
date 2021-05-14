@@ -48,5 +48,6 @@ node_modules/
 # TypeScript cache
 *.tsbuildinfo
 
-# dotenv environment variables file
-.env
+# environment variables file
+environment.ts
+environment.prod.ts
