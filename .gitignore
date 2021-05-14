@@ -49,5 +49,5 @@ node_modules/
 *.tsbuildinfo
 
 # environment variables file
-environment.ts
-environment.prod.ts
+src/environments/environment.ts
+src/environments/environment.prod.ts
