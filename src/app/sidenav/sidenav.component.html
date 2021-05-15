@@ -1,12 +1,20 @@
 <!-- Mat icons: https://fonts.google.com/icons?selected=Material+Icons -->
 <!-- Posts & Collections are not ENTIRELY the same as on prototype. -->
 
-<div class="sidenav-header">
-  <p style="overflow: hidden; word-wrap: break-word">
-    <button class="no-background" mat-button (click)="sidenav.toggle()">
+<!-- Open/close sidenav and org name-->
+<div id="sidenav-header">
+  <ng-template [ngIf]="opened">
+    <button mat-button (click)="sidenav.toggle()">
       <mat-icon aria-hidden="false" aria-label="back button">arrow_back</mat-icon>
     </button>
-    Organisation name</p>
+    <span>Organisation name</span>
+  </ng-template>
+
+  <ng-template [ngIf]="!opened">
+    <button class="no-background" mat-button (click)="sidenav.toggle()">
+      <mat-icon aria-hidden="false" aria-label="back button">arrow_forward</mat-icon>
+    </button>
+  </ng-template>
 </div>
 
   <!-- Sidenav container -->
@@ -17,28 +25,28 @@
                  (closed)="events.push('close!')">
 
       <mat-selection-list [multiple]="false">
-        <mat-list-option routerLink="posts" routerLinkActive="active" class="e2e-posts">
+        <mat-list-option routerLink="dashboard" routerLinkActive="active">
           <div class="icon-container">
             <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon">assessment</mat-icon>
             <span class="icon-text">Dashboard</span>
           </div>
         </mat-list-option>
 
-        <mat-list-option routerLink="events" routerLinkActive="active">
+        <mat-list-option routerLink="profile" routerLinkActive="active">
           <div class="icon-container">
             <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon">assignment_ind</mat-icon>
             <span class="icon-text">Public profile</span>
           </div>
         </mat-list-option>
 
-        <mat-list-option routerLink="chats" routerLinkActive="active">
+        <mat-list-option routerLink="events" routerLinkActive="active">
           <div class="icon-container">
             <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon">event</mat-icon>
             <span class="icon-text">Events</span>
           </div>
         </mat-list-option>
 
-        <mat-list-option routerLink="signup" routerLinkActive="active">
+        <mat-list-option routerLink="posts" routerLinkActive="active">
           <div class="icon-container">
             <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon">text_snippet</mat-icon>
             <span class="icon-text">Posts</span>
@@ -46,21 +54,21 @@
         </mat-list-option>
 
 
-        <mat-list-option routerLink="login" routerLinkActive="active">
+        <mat-list-option routerLink="collections" routerLinkActive="active">
           <div class="icon-container">
             <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon">dashboard_customize</mat-icon>
             <span class="icon-text">Collections</span>
           </div>
         </mat-list-option>
 
-        <mat-list-option routerLink="login" routerLinkActive="active">
+        <mat-list-option routerLink="chats" routerLinkActive="active">
           <div class="icon-container">
             <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon">forum</mat-icon>
             <span class="icon-text">Chats</span>
           </div>
         </mat-list-option>
 
-        <mat-list-option routerLink="login" routerLinkActive="active">
+        <mat-list-option routerLink="volunteers" routerLinkActive="active">
           <div class="icon-container">
             <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon">people</mat-icon>
             <span class="icon-text">Volunteers</span>
