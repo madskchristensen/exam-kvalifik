@@ -7,10 +7,6 @@ mat-sidenav {
   width: 25em;
 }
 
-mat-selection-list {
-  padding-top: 0;
-}
-
 #nav-back {
   border-bottom: #eaeaee solid 1px;
 }
@@ -36,6 +32,7 @@ mat-sidenav-content {
   margin: 4% 7% 4% 3%;
   background-color: #fff;
   padding: 2%;
+  text-align: justify;
 }
 
 mat-list-option[aria-selected="true"] {
