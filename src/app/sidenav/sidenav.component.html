@@ -10,19 +10,19 @@
                (closed)="events.push('close!')">
 
     <!-- Selection list -->
-    <mat-selection-list [multiple]="false">
+    <mat-selection-list [multiple]="false" aria-label="navigation">
 
       <mat-list-option id="nav-back" routerLink="back" routerLinkActive="active" (click)="sidenav.toggle()">
         <ng-template [ngIf]="opened">
           <div class="icon-container">
-            <mat-icon class="icon" aria-hidden="false" aria-label="back">arrow_back</mat-icon>
+            <mat-icon matListIcon class="icon" aria-hidden="false" aria-label="back">arrow_back</mat-icon>
             <span class="icon-text">Organisation name</span>
           </div>
         </ng-template>
 
         <ng-template [ngIf]="!opened">
           <div class="icon-container">
-            <mat-icon aria-hidden="false" aria-label="forward">arrow_forward</mat-icon>
+            <mat-icon matListIcon aria-hidden="false" aria-label="forward">arrow_forward</mat-icon>
             <span class="icon-text">Organisation name</span>
           </div>
         </ng-template>
@@ -30,49 +30,49 @@
 
       <mat-list-option routerLink="dashboard" routerLinkActive="active">
         <div class="icon-container">
-          <mat-icon class="icon" aria-hidden="false" aria-label="dashboard">assessment</mat-icon>
+          <mat-icon matListIcon aria-hidden="false" aria-label="dashboard">assessment</mat-icon>
           <span class="icon-text">Dashboard</span>
         </div>
       </mat-list-option>
 
       <mat-list-option routerLink="profile" routerLinkActive="active">
         <div class="icon-container">
-          <mat-icon class="icon" aria-hidden="false" aria-label="public profile">assignment_ind</mat-icon>
+          <mat-icon matListIcon aria-hidden="false" aria-label="public profile">assignment_ind</mat-icon>
           <span class="icon-text">Public profile</span>
         </div>
       </mat-list-option>
 
       <mat-list-option routerLink="events" routerLinkActive="active">
         <div class="icon-container">
-          <mat-icon class="icon" aria-hidden="false" aria-label="events">event</mat-icon>
+          <mat-icon matListIcon aria-hidden="false" aria-label="events">event</mat-icon>
           <span class="icon-text">Events</span>
         </div>
       </mat-list-option>
 
       <mat-list-option routerLink="posts" routerLinkActive="active">
         <div class="icon-container">
-          <mat-icon class="icon" aria-hidden="false" aria-label="posts">text_snippet</mat-icon>
+          <mat-icon matListIcon aria-hidden="false" aria-label="posts">text_snippet</mat-icon>
           <span class="icon-text">Posts</span>
         </div>
       </mat-list-option>
 
       <mat-list-option routerLink="collections" routerLinkActive="active">
         <div class="icon-container">
-          <mat-icon class="icon" aria-hidden="false" aria-label="collections">dashboard_customize</mat-icon>
+          <mat-icon matListIcon aria-hidden="false" aria-label="collections">dashboard_customize</mat-icon>
           <span class="icon-text">Collections</span>
         </div>
       </mat-list-option>
 
       <mat-list-option routerLink="chats" routerLinkActive="active">
         <div class="icon-container">
-          <mat-icon class="icon" aria-hidden="false" aria-label="chats">forum</mat-icon>
+          <mat-icon matListIcon aria-hidden="false" aria-label="chats">forum</mat-icon>
           <span class="icon-text">Chats</span>
         </div>
       </mat-list-option>
 
       <mat-list-option routerLink="volunteers" routerLinkActive="active">
         <div class="icon-container">
-          <mat-icon class="icon" aria-hidden="false" aria-label="volunteers">people</mat-icon>
+          <mat-icon matListIcon aria-hidden="false" aria-label="volunteers">people</mat-icon>
           <span class="icon-text">Volunteers</span>
         </div>
       </mat-list-option>

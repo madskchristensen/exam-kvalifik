@@ -14,14 +14,15 @@ mat-sidenav {
 .icon-container {
   display: inline-flex;
   align-items: center;
-}
-
-.icon {
-  margin-left: 1em;
+  text-align: center;
 }
 
 .icon-text {
-  margin-left: 2em;
+  padding-left: 1.5em;
+}
+
+mat-selection-list {
+  padding-top: 0;
 }
 
 mat-sidenav-content {
@@ -37,10 +38,6 @@ mat-sidenav-content {
 
 mat-list-option[aria-selected="true"] {
   //background: mat-color($mat-light-theme-background, hover, 0.12);
-}
-
-mat-list-option {
-  margin-bottom: 2%;
 }
 
 .nav-button {
