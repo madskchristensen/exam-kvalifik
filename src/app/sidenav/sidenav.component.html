@@ -1,0 +1,82 @@
+<!-- Mat icons: https://fonts.google.com/icons?selected=Material+Icons -->
+<!-- Posts & Collections are not ENTIRELY the same as on prototype. -->
+
+<div class="sidenav-header">
+  <p style="overflow: hidden; word-wrap: break-word">
+    <button class="no-background" mat-button (click)="sidenav.toggle()">
+      <mat-icon aria-hidden="false" aria-label="back button">arrow_back</mat-icon>
+    </button>
+    Organisation name</p>
+</div>
+
+  <!-- Sidenav container -->
+  <mat-sidenav-container class="example-container">
+
+    <!--  Sidenav content -->
+    <mat-sidenav #sidenav mode="side" role="navigation" [(opened)]="opened" (opened)="events.push('open!')"
+                 (closed)="events.push('close!')">
+
+      <mat-selection-list [multiple]="false">
+        <mat-list-option routerLink="posts" routerLinkActive="active" class="e2e-posts">
+          <div class="icon-container">
+            <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon">assessment</mat-icon>
+            <span class="icon-text">Dashboard</span>
+          </div>
+        </mat-list-option>
+
+        <mat-list-option routerLink="events" routerLinkActive="active">
+          <div class="icon-container">
+            <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon">assignment_ind</mat-icon>
+            <span class="icon-text">Public profile</span>
+          </div>
+        </mat-list-option>
+
+        <mat-list-option routerLink="chats" routerLinkActive="active">
+          <div class="icon-container">
+            <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon">event</mat-icon>
+            <span class="icon-text">Events</span>
+          </div>
+        </mat-list-option>
+
+        <mat-list-option routerLink="signup" routerLinkActive="active">
+          <div class="icon-container">
+            <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon">text_snippet</mat-icon>
+            <span class="icon-text">Posts</span>
+          </div>
+        </mat-list-option>
+
+
+        <mat-list-option routerLink="login" routerLinkActive="active">
+          <div class="icon-container">
+            <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon">dashboard_customize</mat-icon>
+            <span class="icon-text">Collections</span>
+          </div>
+        </mat-list-option>
+
+        <mat-list-option routerLink="login" routerLinkActive="active">
+          <div class="icon-container">
+            <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon">forum</mat-icon>
+            <span class="icon-text">Chats</span>
+          </div>
+        </mat-list-option>
+
+        <mat-list-option routerLink="login" routerLinkActive="active">
+          <div class="icon-container">
+            <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon">people</mat-icon>
+            <span class="icon-text">Volunteers</span>
+          </div>
+        </mat-list-option>
+      </mat-selection-list>
+
+    </mat-sidenav>
+
+    <!--  Main content -->
+    <mat-sidenav-content role="main">
+      <router-outlet></router-outlet>
+      <div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi dignissimos eum ex inventore libero nobis,
+          quisquam ut! Adipisci animi dignissimos, excepturi facilis id, illo illum molestias numquam, repellat saepe
+          sequi.</p>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
