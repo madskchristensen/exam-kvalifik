@@ -1,23 +1,4 @@
 <!-- Mat icons: https://fonts.google.com/icons?selected=Material+Icons -->
-<!-- Posts & Collections are not ENTIRELY the same as on prototype. -->
-
-<!-- Open/close sidenav and org name-->
-<!--<div class="sidenav-header-wrapper">
-<div id="sidenav-header">
-  <ng-template [ngIf]="opened">
-    <button mat-button (click)="sidenav.toggle()">
-      <mat-icon aria-hidden="false" aria-label="back button">arrow_back</mat-icon>
-    </button>
-    <span>Organisation name</span>
-  </ng-template>
-
-  <ng-template [ngIf]="!opened">
-    <button class="no-background" mat-button (click)="sidenav.toggle()">
-      <mat-icon aria-hidden="false" aria-label="back button">arrow_forward</mat-icon>
-    </button>
-  </ng-template>
-</div>
-</div>-->
 
   <!-- Sidenav container -->
   <mat-sidenav-container class="sidenav-container">
@@ -26,6 +7,7 @@
     <mat-sidenav #sidenav mode="side" role="navigation" [(opened)]="opened" (opened)="events.push('open!')"
                  (closed)="events.push('close!')">
 
+<!--      Selection list -->
       <mat-selection-list [multiple]="false">
 
         <mat-list-option id="nav-back" routerLink="back" routerLinkActive="active" (click)="sidenav.toggle()">
@@ -97,6 +79,7 @@
       </mat-selection-list>
 
     </mat-sidenav>
+
     <!--  Main content -->
     <mat-sidenav-content role="main">
       <div id="main-content">
