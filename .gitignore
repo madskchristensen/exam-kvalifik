@@ -51,3 +51,9 @@ node_modules/
 # environment variables file
 src/environments/environment.ts
 src/environments/environment.prod.ts
+
+# prettier
+.prettier*
+
+# vscode
+.vscode

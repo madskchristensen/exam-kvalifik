@@ -1,1 +1,9 @@
 <p>posts works!</p>
+<ul *ngFor="let post of posts">
+  <li>Title: {{ post.title }}</li>
+  <li>Text: {{ post.text }}</li>
+  <li>Published: {{ post.published }}</li>
+  <li>Pinned: {{ post.pinned }}</li>
+  <li>MediaType: {{ post.mediaType }}</li>
+  <li>MediaRef: {{ post.mediaRef }}</li>
+</ul>
