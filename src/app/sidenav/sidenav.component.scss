@@ -1,37 +1,57 @@
-@import '~@angular/material/theming';
-
-.example-container {
+.sidenav-container {
   background: #fff;
   height: 100vh;
 }
 
 mat-sidenav {
-  width: 20em;
+  width: 25em;
 }
 
-#sidenav-header {
-  display: flex;
-  align-items: center;
+#nav-back {
+  border-bottom: #eaeaee solid 1px;
 }
 
 .icon-container {
   display: inline-flex;
   align-items: center;
-}
-
-.icon {
-  margin-left: 2em;
+  text-align: center;
 }
 
 .icon-text {
-  margin-left: 2em;
+  padding-left: 1.5em;
+}
+
+mat-selection-list {
+  padding-top: 0;
 }
 
 mat-sidenav-content {
   background-color: #f5f5f5;
 }
 
+#main-content {
+  margin: 4% 7% 4% 3%;
+  background-color: #fff;
+  padding: 2%;
+  text-align: justify;
+  position: unset;
+}
+
 mat-list-option[aria-selected="true"] {
-  background: mat-color($mat-light-theme-background, hover, 0.18);
-  
+  //background: mat-color($mat-light-theme-background, hover, 0.12);
+}
+
+.nav-button {
+  padding: 0;
+  min-width: 0;
+}
+
+mat-sidenav:not(.mat-drawer-opened) {
+  transform: translate3d(0, 0, 0) !important;
+  visibility: visible !important;
+  width: 5% !important;
+}
+
+mat-sidenav-content:not(.mat-drawer-opened) {
+  margin-left: 5%;
 }
