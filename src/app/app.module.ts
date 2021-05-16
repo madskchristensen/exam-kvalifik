@@ -6,6 +6,12 @@ import { AppComponent } from './app.component';
 
 import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './post/post.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatListModule } from "@angular/material/list";
+import { MatIconModule } from "@angular/material/icon";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatButtonModule } from "@angular/material/button";
 
 import { environment } from '../environments/environment';
 
@@ -17,13 +23,19 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
   declarations: [
     AppComponent,
     PostsComponent,
-    PostComponent
+    PostComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
+    BrowserAnimationsModule,
+    MatListModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

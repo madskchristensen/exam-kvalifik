@@ -1,0 +1,165 @@
+<!--
+    Mat icons: https://fonts.google.com/icons?selected=Material+Icons
+-->
+
+<!-- Sidenav container -->
+<mat-sidenav-container class="sidenav-container">
+
+  <!--  Sidenav content -->
+  <mat-sidenav #sidenav mode="side" role="navigation" [(opened)]="opened" (opened)="events.push('open!')"
+               (closed)="events.push('close!')">
+
+    <!-- Selection list -->
+    <mat-selection-list [multiple]="false" aria-label="navigation">
+
+      <mat-list-option id="nav-back" routerLink="back" routerLinkActive="active" (click)="sidenav.toggle()">
+        <ng-template [ngIf]="opened">
+          <div class="icon-container">
+            <mat-icon matListIcon aria-hidden="false" aria-label="back">arrow_back</mat-icon>
+            <span class="icon-text">Organisation name</span>
+          </div>
+        </ng-template>
+
+        <ng-template [ngIf]="!opened">
+          <div class="icon-container">
+            <mat-icon matListIcon aria-hidden="false" aria-label="forward">arrow_forward</mat-icon>
+            <span class="icon-text">Organisation name</span>
+          </div>
+        </ng-template>
+      </mat-list-option>
+
+      <mat-list-option routerLink="dashboard" routerLinkActive="active">
+        <div class="icon-container">
+          <mat-icon matListIcon aria-hidden="false" aria-label="dashboard">assessment</mat-icon>
+          <span class="icon-text">Dashboard</span>
+        </div>
+      </mat-list-option>
+
+      <mat-list-option routerLink="profile" routerLinkActive="active">
+        <div class="icon-container">
+          <mat-icon matListIcon aria-hidden="false" aria-label="public profile">assignment_ind</mat-icon>
+          <span class="icon-text">Public profile</span>
+        </div>
+      </mat-list-option>
+
+      <mat-list-option routerLink="events" routerLinkActive="active">
+        <div class="icon-container">
+          <mat-icon matListIcon aria-hidden="false" aria-label="events">event</mat-icon>
+          <span class="icon-text">Events</span>
+        </div>
+      </mat-list-option>
+
+      <mat-list-option routerLink="posts" routerLinkActive="active">
+        <div class="icon-container">
+          <mat-icon matListIcon aria-hidden="false" aria-label="posts">text_snippet</mat-icon>
+          <span class="icon-text">Posts</span>
+        </div>
+      </mat-list-option>
+
+      <mat-list-option routerLink="collections" routerLinkActive="active">
+        <div class="icon-container">
+          <mat-icon matListIcon aria-hidden="false" aria-label="collections">dashboard_customize</mat-icon>
+          <span class="icon-text">Collections</span>
+        </div>
+      </mat-list-option>
+
+      <mat-list-option routerLink="chats" routerLinkActive="active">
+        <div class="icon-container">
+          <mat-icon matListIcon aria-hidden="false" aria-label="chats">forum</mat-icon>
+          <span class="icon-text">Chats</span>
+        </div>
+      </mat-list-option>
+
+      <mat-list-option routerLink="volunteers" routerLinkActive="active">
+        <div class="icon-container">
+          <mat-icon matListIcon aria-hidden="false" aria-label="volunteers">people</mat-icon>
+          <span class="icon-text">Volunteers</span>
+        </div>
+      </mat-list-option>
+
+    </mat-selection-list>
+
+  </mat-sidenav>
+
+  <!--  Main content -->
+  <mat-sidenav-content role="main">
+    <div id="main-content">
+      <router-outlet></router-outlet>
+      <div>
+        <h1>Title</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad aperiam aspernatur, dicta dolorem
+          eligendi eos facilis harum itaque laboriosam laudantium nemo nisi nulla odio porro quam quo recusandae
+          reiciendis sequi temporibus ullam unde veniam, veritatis? Architecto assumenda aut dolorum, ea error harum
+          id laborum natus, quibusdam ratione reiciendis sunt tempora tenetur ullam voluptates? At, atque beatae
+          deleniti eius, ex id magni maxime molestiae non numquam odio officiis veniam! Eius est et incidunt numquam
+          reiciendis vel velit. Blanditiis cumque dignissimos nam pariatur repellat? Molestiae necessitatibus quia
+          repellendus. Asperiores aspernatur, doloremque ducimus earum error explicabo inventore molestiae, nemo nulla
+          praesentium sequi tenetur unde, vitae. Accusamus, adipisci aspernatur assumenda beatae blanditiis cum cumque
+          dignissimos distinctio eum illo illum incidunt itaque minima molestias, natus nesciunt nobis non omnis optio
+          perspiciatis quae quia quisquam quo quod reprehenderit repudiandae similique sint tempora ullam vero
+          voluptas voluptatem voluptates voluptatibus. At dolores iusto labore natus quidem, ratione vel voluptates.
+          Aspernatur, consequatur, cumque dolore eligendi error eum exercitationem impedit necessitatibus nemo neque
+          quam quibusdam quo quod recusandae repellendus sapiente voluptas voluptatibus voluptatum. Architecto earum
+          fuga nobis perferendis placeat soluta ullam? Aliquid, dolor doloremque eius eveniet excepturi minus nesciunt
+          nulla quia quibusdam tempora unde vel voluptates. Corporis culpa dolore obcaecati? Ab consequuntur
+          doloremque dolorum eaque facere laudantium obcaecati porro unde, vero? Asperiores consequuntur doloremque
+          earum eligendi facere. Accusantium architecto earum eveniet, explicabo harum hic necessitatibus numquam quam
+          quasi temporibus, tenetur, unde veniam. Consectetur consequuntur eos eveniet expedita incidunt minima
+          possimus quis, quo tempora veniam. Exercitationem fugit hic numquam pariatur sapiente? Alias aliquam
+          architecto atque beatae consequatur dignissimos ducimus earum eius eos expedita fugiat in inventore labore
+          libero, maiores maxime minima nihil nisi nobis odit quasi quia reiciendis sint sit sunt veritatis voluptatem
+          voluptates? Aperiam asperiores, consequuntur deserunt dignissimos ducimus, eos, et facere hic libero odit
+          optio perspiciatis placeat quasi quibusdam repudiandae sed sequi vero! Alias amet blanditiis debitis dolore
+          eaque eius eligendi et eum fugiat harum hic iure iusto laboriosam, necessitatibus non obcaecati officia
+          porro possimus praesentium rem repudiandae similique vel voluptatum? Ad culpa dolor eos facere facilis ipsam
+          iusto modi qui similique? Assumenda aut minus molestiae qui recusandae ullam voluptatibus. Accusamus
+          aspernatur blanditiis consectetur cumque deleniti dicta dignissimos dolores doloribus dolorum ea eos et eum
+          exercitationem illo in ipsam laudantium maiores, molestias neque nihil non nostrum odit optio perspiciatis
+          possimus provident quaerat quibusdam quod, recusandae repellat rerum similique ut vero? Amet deleniti illo
+          maiores nostrum, quis soluta totam veniam. Ab, aliquid, amet at consequuntur cum deleniti distinctio
+          doloribus earum eum expedita fugiat illo ipsum laboriosam magnam nobis obcaecati officia omnis quaerat quam,
+          quia quisquam tempore unde ut veritatis vero. Aliquid doloremque illo maxime reiciendis ut! Aspernatur
+          fugiat iure, laudantium minus officiis praesentium! Commodi eaque eum laborum libero possimus quas saepe
+          tempora vitae. A autem debitis ducimus eum expedita id incidunt iusto laborum modi numquam, quaerat ratione
+          recusandae repellat suscipit ullam vero voluptas voluptate voluptates! Amet aut consequatur culpa ex,
+          expedita explicabo facere harum impedit ipsa iste obcaecati, pariatur perspiciatis quia quis sapiente.
+          Aliquam amet architecto deleniti eaque earum explicabo facere quae qui similique tenetur! Aliquid beatae,
+          corporis culpa delectus deleniti deserunt dolor et facere fuga labore laborum neque numquam pariatur
+          reiciendis sed sint tempore! Odit, unde, voluptas. Aperiam, eveniet officia! Ab consequatur cumque deleniti
+          esse est fugit impedit, in incidunt, nemo omnis optio placeat possimus quod repellat voluptates? Accusamus
+          incidunt, ipsam possimus quam quidem reiciendis repellendus reprehenderit sit voluptatibus. Accusantium,
+          beatae delectus deleniti esse magni modi molestiae nesciunt nulla numquam odit quae quam, ullam? Adipisci
+          aperiam beatae cum dicta dolor doloremque eos ipsam ipsum nisi, officiis optio quas recusandae rerum sit
+          sunt tenetur ullam, veniam. A ab adipisci commodi delectus dicta doloremque dolores earum eos expedita illum
+          ipsa, nemo neque, nobis obcaecati odio officia perferendis provident qui quo quos saepe sed sequi sint
+          tempore voluptas? Aliquid architecto aspernatur consectetur cupiditate, delectus deserunt dolorum error
+          eveniet hic ipsa ipsam ipsum laborum libero modi nisi optio provident quo quos, rem saepe sequi tempora
+          ullam vel veritatis voluptatum. Aliquid animi architecto assumenda atque aut autem cum delectus dolor dolore
+          doloremque dolores error eum explicabo facere fugit hic illo ipsum itaque laboriosam magni odio, placeat
+          quidem quis sit tempora, ullam veritatis. Atque culpa est fugiat harum inventore necessitatibus repudiandae
+          tempore unde? Accusamus aspernatur esse labore laborum minus optio sequi suscipit unde? A accusamus alias
+          consequatur cumque debitis deserunt est eveniet ipsam libero tempora. Aliquam, at, culpa facere laborum,
+          maiores modi nihil numquam porro quam sunt temporibus totam voluptates. Ab animi corporis ducimus ex fugiat
+          id illo incidunt ipsa iste nihil non nostrum nulla obcaecati qui quibusdam, rem repudiandae ut vel! Ad
+          architecto, beatae doloremque, eligendi id incidunt laborum molestias mollitia nam nulla quos, repellendus
+          sequi suscipit ut voluptate? Magnam modi necessitatibus odit quibusdam vero? Exercitationem, explicabo
+          facere harum ipsam maiores neque odit? Alias asperiores, aut cupiditate debitis dolore dolorem ducimus
+          facilis harum impedit laborum laudantium minus molestiae natus porro quam quas qui, recusandae repellat
+          repellendus sapiente vero vitae voluptate voluptates. Eos esse excepturi id itaque ratione. Cumque dolorem
+          doloremque doloribus nostrum suscipit! Architecto assumenda autem ducimus earum expedita illum incidunt iste
+          molestiae odio pariatur possimus quidem, reiciendis soluta. Autem consequuntur eaque expedita, illum itaque
+          laborum, magni nam neque nobis nostrum omnis porro, quae quibusdam saepe sint velit vero. Ad alias
+          blanditiis deserunt dolorem, odio quis voluptatem. Autem dolores eligendi est in laborum officia recusandae
+          repellat reprehenderit? Nisi, rerum, sequi? At commodi corporis delectus distinctio ducimus ea eius enim eos
+          error est exercitationem fugiat ipsam laboriosam laborum, magnam maxime minus modi nesciunt nihil nisi nobis
+          possimus quaerat quia quibusdam quidem rerum saepe similique, sint tempore ut velit veniam veritatis
+          voluptatibus! Aspernatur libero nisi odio reprehenderit velit! Accusamus accusantium ad aliquid amet beatae
+          consequatur cumque dolorum eaque earum eius, eos ex facere facilis fugit hic illo illum incidunt iste magnam
+          maxime minus molestias necessitatibus neque nihil nobis possimus provident quaerat quibusdam ratione
+          reiciendis reprehenderit sed, sequi similique tempore velit veritatis voluptas. A ad, alias animi architecto
+          aspernatur, cupiditate dolorum eius esse itaque libero maxime odio pariatur perspiciatis, quas quasi
+          reprehenderit sapiente! Possimus, rem, voluptatem.</p>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
