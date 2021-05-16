@@ -12,4 +12,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public testMenuItem() {
+    console.log("Hey der")
+  }
 }

@@ -13,6 +13,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatButtonModule } from "@angular/material/button";
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from "@angular/material/menu";
 
 import { environment } from '../environments/environment';
 
@@ -35,7 +36,8 @@ import { HeaderComponent } from './header/header.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     BrowserAnimationsModule,
-    MatListModule, MatIconModule, MatSidenavModule, MatButtonModule, MatToolbarModule
+    MatListModule, MatIconModule, MatSidenavModule, MatButtonModule, MatToolbarModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

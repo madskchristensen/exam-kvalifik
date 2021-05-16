@@ -10,24 +10,27 @@ mat-toolbar {
   font-size: 1rem;
 }
 
-.spacer {
-  margin-right: 40%;
-}
-
 .spacer2 {
   margin-right: 6.5%;
 }
 
 #header-cbs-logo {
   max-width: 7%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #header-user-text {
-  font-weight: 900;
+
+}
+
+#header-user-button {
+  padding-left: 0;
+  margin-right: 6%;
 }
 
 #header-user-logo {
   padding-left: 0.8%;
-  font-size: 2em;
-  height: 50%;
+  font-size: 2.5em;
 }
