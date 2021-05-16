@@ -32,5 +32,6 @@ mat-sidenav-content {
 }
 
 mat-list-option[aria-selected="true"] {
-//  angular-material-color($mat-light-theme-background, hover, 0.12);
+  background: mat-color($mat-light-theme-background, hover, 0.18);
+  
 }
