@@ -48,5 +48,12 @@ node_modules/
 # TypeScript cache
 *.tsbuildinfo
 
-# dotenv environment variables file
-.env
+# environment variables file
+src/environments/environment.ts
+src/environments/environment.prod.ts
+
+# prettier
+.prettier*
+
+# vscode
+.vscode
