@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
-  AngularFirestoreCollection
+  AngularFirestoreCollection,
+  AngularFirestoreDocument
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Post } from 'src/app/entities/Post';
@@ -13,6 +14,7 @@ import { map } from 'rxjs/operators';
 })
 export class PostService implements IService<Post> {
   postsCollection!: AngularFirestoreCollection<Post>;
+  postsDocument!: AngularFirestoreDocument<Post>;
   posts: Observable<Post[]>;
   private collectionName: string = 'posts';
 
@@ -22,8 +24,8 @@ export class PostService implements IService<Post> {
       map((snaps) =>
         snaps.map((snap) => {
           const data = snap.payload.doc.data() as Post;
-          const id = snap.payload.doc.id;
-          return { id, ...data };
+          data.id = snap.payload.doc.id;
+          return data;
         })
       )
     );
@@ -32,16 +34,15 @@ export class PostService implements IService<Post> {
   getAll(): Observable<Post[]> {
     return this.posts;
   }
-  get(id: string): Post {
-    throw new Error('Method not implemented.');
-  }
   add(t: Post): void {
-    throw new Error('Method not implemented.');
+    this.postsCollection.add(t);
   }
   update(t: Post): void {
-    throw new Error('Method not implemented.');
+    this.postsDocument = this.db.doc(`${this.collectionName}/${t.id}`);
+    this.postsDocument.update(t);
   }
   delete(t: Post): void {
-    throw new Error('Method not implemented.');
+    this.postsDocument = this.db.doc(`${this.collectionName}/${t.id}`);
+    this.postsDocument.delete();
   }
 }
