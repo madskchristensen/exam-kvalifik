@@ -12,12 +12,10 @@
     <!-- Selection list -->
     <mat-selection-list [multiple]="false" aria-label="navigation">
 
-
-
       <mat-list-option id="nav-back" routerLink="back" routerLinkActive="active" (click)="sidenav.toggle()">
         <ng-template [ngIf]="opened">
           <div class="icon-container">
-            <mat-icon matListIcon class="icon" aria-hidden="false" aria-label="back">arrow_back</mat-icon>
+            <mat-icon matListIcon aria-hidden="false" aria-label="back">arrow_back</mat-icon>
             <span class="icon-text">Organisation name</span>
           </div>
         </ng-template>
