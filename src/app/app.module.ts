@@ -21,6 +21,9 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HeaderComponent } from './components/header/header.component';
+import {DevToolsExtension, NgRedux, NgReduxModule} from "@angular-redux/store";
+import {AppState, rootReducer} from "./store/Store";
+import {NgReduxRouter, NgReduxRouterModule} from "@angular-redux/router";
 
 @NgModule({
   declarations: [
@@ -37,9 +40,19 @@ import { HeaderComponent } from './components/header/header.component';
     AngularFirestoreModule,
     BrowserAnimationsModule,
     MatListModule, MatIconModule, MatSidenavModule, MatButtonModule, MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    NgReduxModule, NgReduxRouterModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private ngRedux: NgRedux<AppState>, private devTool: DevToolsExtension) {
+
+    this.ngRedux.configureStore(
+      rootReducer,
+      {},
+      [],
+      [ devTool.isEnabled() ? devTool.enhancer() : f => f]);
+  }
+}

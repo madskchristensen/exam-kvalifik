@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {NgRedux} from "@angular-redux/store";
+import {AppState} from "../../store/Store";
 
 @Component({
   selector: 'app-sidenav',
@@ -9,9 +11,9 @@ export class SidenavComponent implements OnInit {
   events: string[] = [];
   opened: boolean = true;
 
-  constructor() { }
-
+  constructor(private ngRedux: NgRedux<AppState>) { }
   ngOnInit(): void {
+
   }
 
 }
