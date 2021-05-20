@@ -17,7 +17,23 @@ export class PostActions {
   static READ_POSTS: string = "READ_POSTS";
 
   addPost(newPost: Post) {
+    this.postService.add(newPost)
+      .then(res => {
+        this.ngRedux.dispatch({
+          type: PostActions.ADD_POST,
+          payload: res
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
 
+/*    this.postService.add(newPost).subscribe((res: any) => {
+      this.ngRedux.dispatch({
+        type: PostActions.ADD_POST,
+        payload: res
+      })
+    })*/
   }
 
   readPosts() {

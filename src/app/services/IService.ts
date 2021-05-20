@@ -1,8 +1,9 @@
 import {
   AngularFirestoreCollection,
-  AngularFirestoreDocument
+  AngularFirestoreDocument, DocumentReference
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import {Post} from "../entities/Post";
 
 export interface IService<T> {
   collection: AngularFirestoreCollection<T>;
@@ -10,7 +11,7 @@ export interface IService<T> {
   list: Observable<T[]>;
   name: string;
   getAll(): Observable<T[]>;
-  add(t: T): void;
+  add(t: T): Promise<T>;
   update(t: T): void;
   delete(t: T): void;
 }
