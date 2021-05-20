@@ -22,7 +22,7 @@ export function postReducer(state: PostState = INITIAL_STATE, action: any) {
       // do something
 
     case PostActions.READ_POSTS:
-      // do something
+      return tassign(state, { posts: action.payload })
 
     default:
       return state;

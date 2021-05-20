@@ -21,7 +21,13 @@ export class PostActions {
   }
 
   readPosts() {
+    this.postService.getAll().subscribe((res: any) => {
 
+      this.ngRedux.dispatch({
+        type: PostActions.READ_POSTS,
+        payload: res
+      });
+    })
   }
 
   updatePost(updatedPost: Post) {
