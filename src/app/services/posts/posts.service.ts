@@ -13,36 +13,43 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PostService implements IService<Post> {
-  postsCollection!: AngularFirestoreCollection<Post>;
-  postsDocument!: AngularFirestoreDocument<Post>;
-  posts: Observable<Post[]>;
-  private collectionName: string = 'posts';
+  collection!: AngularFirestoreCollection<Post>;
+  document!: AngularFirestoreDocument<Post>;
+  list: Observable<Post[]>;
+  name: string = 'posts';
 
   constructor(public db: AngularFirestore) {
-    this.postsCollection = db.collection<Post>(this.collectionName);
-    this.posts = this.postsCollection.snapshotChanges().pipe(
-      map((snaps) =>
-        snaps.map((snap) => {
-          const data = snap.payload.doc.data() as Post;
-          data.id = snap.payload.doc.id;
-          return data;
-        })
-      )
+    this.collection = db.collection<Post>(
+      this.name
     );
+    this.list = this.collection
+      .snapshotChanges()
+      .pipe(
+        map((snaps) =>
+          snaps.map((snap) => {
+            const data = snap.payload.doc.data() as Post;
+            data.id = snap.payload.doc.id;
+            return data;
+          })
+        )
+      );
   }
-
   getAll(): Observable<Post[]> {
-    return this.posts;
+    return this.list;
   }
   add(t: Post): void {
-    this.postsCollection.add(t);
+    this.collection.add(t);
   }
   update(t: Post): void {
-    this.postsDocument = this.db.doc(`${this.collectionName}/${t.id}`);
-    this.postsDocument.update(t);
+    this.document = this.db.doc(
+      `${this.name}/${t.id}`
+    );
+    this.document.update(t);
   }
   delete(t: Post): void {
-    this.postsDocument = this.db.doc(`${this.collectionName}/${t.id}`);
-    this.postsDocument.delete();
+    this.document = this.db.doc(
+      `${this.name}/${t.id}`
+    );
+    this.document.delete();
   }
 }
