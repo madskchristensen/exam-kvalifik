@@ -27,6 +27,7 @@ mat-selection-list {
 
 mat-sidenav-content {
   background-color: #f5f5f5;
+  overflow: hidden;
 }
 
 #main-content {
@@ -34,7 +35,6 @@ mat-sidenav-content {
   background-color: #fff;
   padding: 2%;
   text-align: justify;
-  position: unset;
 }
 
 mat-list-option[aria-selected="true"] {
