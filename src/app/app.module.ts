@@ -8,19 +8,18 @@ import { PostsComponent } from './components/posts/posts.component';
 import { PostComponent } from './components/post/post.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatListModule } from "@angular/material/list";
-import { MatIconModule } from "@angular/material/icon";
-import { MatSidenavModule } from "@angular/material/sidenav";
-import { MatButtonModule } from "@angular/material/button";
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from "@angular/material/menu";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-
- 
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
 
 import { environment } from '../environments/environment';
 
@@ -29,6 +28,9 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HeaderComponent } from './components/header/header.component';
 import { NewpostComponent } from './components/newpost/newpost.component';
+import {DevToolsExtension, NgRedux, NgReduxModule} from "@angular-redux/store";
+import {AppState, rootReducer} from "./store/Store";
+import {NgReduxRouter, NgReduxRouterModule} from "@angular-redux/router";
 
 @NgModule({
   declarations: [
@@ -48,9 +50,20 @@ import { NewpostComponent } from './components/newpost/newpost.component';
     MatListModule, MatIconModule, MatSidenavModule, MatButtonModule, MatToolbarModule,
     MatMenuModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatSlideToggleModule,
     ReactiveFormsModule, 
-    FormsModule
+    FormsModule, MatTableModule,
+    NgReduxModule, NgReduxRouterModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+  constructor(private ngRedux: NgRedux<AppState>, private devTool: DevToolsExtension) {
+
+    this.ngRedux.configureStore(
+      rootReducer,
+      {},
+      [],
+      [ devTool.isEnabled() ? devTool.enhancer() : f => f]);
+  }
+}

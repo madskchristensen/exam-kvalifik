@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
 export class PostService implements IService<Post> {
   collection!: AngularFirestoreCollection<Post>;
   document!: AngularFirestoreDocument<Post>;

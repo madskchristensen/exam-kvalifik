@@ -4,6 +4,7 @@ export interface Post {
   text: string;
   published: boolean;
   pinned: boolean;
+  createdAt: string;
   mediaType?: string | null;
   mediaRef?: string | null;
 }
