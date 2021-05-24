@@ -31,6 +31,7 @@ import { NewpostComponent } from './components/newpost/newpost.component';
 import {DevToolsExtension, NgRedux, NgReduxModule} from "@angular-redux/store";
 import {AppState, rootReducer} from "./store/Store";
 import {NgReduxRouter, NgReduxRouterModule} from "@angular-redux/router";
+import { EditpostComponent } from './components/editpost/editpost.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {NgReduxRouter, NgReduxRouterModule} from "@angular-redux/router";
     PostComponent,
     SidenavComponent,
     HeaderComponent,
-    NewpostComponent
+    NewpostComponent,
+    EditpostComponent
   ],
   imports: [
     BrowserModule,
