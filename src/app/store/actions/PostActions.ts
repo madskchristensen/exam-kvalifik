@@ -21,7 +21,7 @@ export class PostActions {
       .then(res => {
         this.ngRedux.dispatch({
           type: PostActions.ADD_POST,
-          payload: res
+          payload: newPost
         })
       })
       .catch(err => {

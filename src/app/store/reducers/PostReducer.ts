@@ -16,7 +16,7 @@ export function postReducer(state: PostState = INITIAL_STATE, action: any) {
   switch(action.type) {
 
     case PostActions.ADD_POST:
-      // do something
+      return tassign(state, { posts: [...state.posts, action.payload] })
 
     case PostActions.UPDATE_POST:
       // do something
