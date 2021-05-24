@@ -13,6 +13,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 
@@ -22,6 +27,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HeaderComponent } from './components/header/header.component';
+import { NewpostComponent } from './components/newpost/newpost.component';
 import {DevToolsExtension, NgRedux, NgReduxModule} from "@angular-redux/store";
 import {AppState, rootReducer} from "./store/Store";
 import {NgReduxRouter, NgReduxRouterModule} from "@angular-redux/router";
@@ -32,7 +38,8 @@ import {NgReduxRouter, NgReduxRouterModule} from "@angular-redux/router";
     PostsComponent,
     PostComponent,
     SidenavComponent,
-    HeaderComponent
+    HeaderComponent,
+    NewpostComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +48,9 @@ import {NgReduxRouter, NgReduxRouterModule} from "@angular-redux/router";
     AngularFirestoreModule,
     BrowserAnimationsModule,
     MatListModule, MatIconModule, MatSidenavModule, MatButtonModule, MatToolbarModule,
-    MatMenuModule, MatTableModule,
+    MatMenuModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatSlideToggleModule,
+    ReactiveFormsModule, 
+    FormsModule, MatTableModule,
     NgReduxModule, NgReduxRouterModule.forRoot()
   ],
   providers: [],
