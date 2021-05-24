@@ -27,7 +27,8 @@ mat-selection-list {
 
 mat-sidenav-content {
   background-color: #f5f5f5;
-  overflow: hidden;
+  // Toggles content module scrollbar
+  // overflow: hidden;
 }
 
 #main-content {
