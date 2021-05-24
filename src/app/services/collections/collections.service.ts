@@ -13,15 +13,14 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CollectionsService
-  implements IService<Collection>
 {
   collection!: AngularFirestoreCollection<Collection>;
   document!: AngularFirestoreDocument<Collection>;
   list!: Observable<Collection[]>;
-  name!: string;
+  collectionName!: string;
 
   constructor(public db: AngularFirestore) {
-    this.collection = db.collection<Collection>(this.name);
+    this.collection = db.collection<Collection>(this.collectionName);
     this.list = this.collection.snapshotChanges().pipe(
       map((snaps) =>
         snaps.map((snap) => {
@@ -40,11 +39,11 @@ export class CollectionsService
     this.collection.add(t);
   }
   update(t: Collection): void {
-    this.document = this.db.doc(`${this.name}/${t.id}`);
+    this.document = this.db.doc(`${this.collectionName}/${t.id}`);
     this.document.update(t);
   }
   delete(t: Collection): void {
-    this.document = this.db.doc(`${this.name}/${t.id}`);
+    this.document = this.db.doc(`${this.collectionName}/${t.id}`);
     this.document.delete();
   }
 }
