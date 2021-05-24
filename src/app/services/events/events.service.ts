@@ -12,14 +12,14 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class EventsService implements IService<Event> {
+export class EventsService {
   collection!: AngularFirestoreCollection<Event>;
   document!: AngularFirestoreDocument<Event>;
   list!: Observable<Event[]>;
-  name!: string;
+  collectionName!: string;
 
   constructor(public db: AngularFirestore) {
-    this.collection = db.collection<Event>(this.name);
+    this.collection = db.collection<Event>(this.collectionName);
     this.list = this.collection.snapshotChanges().pipe(
       map((snaps) =>
         snaps.map((snap) => {
@@ -37,11 +37,11 @@ export class EventsService implements IService<Event> {
     this.collection.add(t);
   }
   update(t: Event): void {
-    this.document = this.db.doc(`${this.name}/${t.id}`);
+    this.document = this.db.doc(`${this.collectionName}/${t.id}`);
     this.document.update(t);
   }
   delete(t: Event): void {
-    this.document = this.db.doc(`${this.name}/${t.id}`);
+    this.document = this.db.doc(`${this.collectionName}/${t.id}`);
     this.document.delete();
   }
 }

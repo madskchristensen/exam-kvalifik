@@ -8,6 +8,7 @@ import {from, Observable} from 'rxjs';
 import { Post } from 'src/app/entities/Post';
 import { IService } from 'src/app/services/IService';
 import { map } from 'rxjs/operators';
+import { isEqual } from "lodash";
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +16,12 @@ import { map } from 'rxjs/operators';
 
 export class PostService implements IService<Post> {
   collection!: AngularFirestoreCollection<Post>;
-  document!: AngularFirestoreDocument<Post>;
   list: Observable<Post[]>;
-  name: string = 'posts';
+  collectionName: string = 'posts';
 
   constructor(public db: AngularFirestore) {
     this.collection = db.collection<Post>(
-      this.name
+      this.collectionName
     );
     this.list = this.collection
       .snapshotChanges()
@@ -56,23 +56,53 @@ export class PostService implements IService<Post> {
       } else {
         reject(postFromFirestore)
       }
-    })
+    });
+  }
 
-    // return from(this.collection.add(t))
-    //   .pipe(
-    //     map(doc => this.collection.doc<Post>(doc.id).valueChanges())
-    //   )
-  }
-  update(t: Post): void {
-    this.document = this.db.doc(
-      `${this.name}/${t.id}`
+  // https://stackoverflow.com/questions/34660265/importing-lodash-into-angular2-typescript-application
+  update(t: Post): Promise<Post> {
+    // get document with same id as t from firebase
+    let document: AngularFirestoreDocument<Post> = this.db.doc(
+      `${this.collectionName}/${t.id}`
     );
-    this.document.update(t);
+
+    document.update(t)
+
+    // extract post from the document
+    let postFromAngular: Post;
+    document.get().subscribe(snapshot => {
+      postFromAngular = snapshot.data() as Post;
+    });
+
+    return new Promise<Post>((resolve, reject) => {
+      if (isEqual(t, postFromAngular)) {
+        resolve(t)
+      } else if (!isEqual(t, postFromAngular)) {
+        reject(postFromAngular)
+      }
+    });
   }
-  delete(t: Post): void {
-    this.document = this.db.doc(
-      `${this.name}/${t.id}`
+
+  delete(t: Post): Promise<Post> {
+    // get document with same id as t from firebase
+    let document: AngularFirestoreDocument<Post> = this.db.doc(
+      `${this.collectionName}/${t.id}`
     );
-    this.document.delete();
+
+    document.delete();
+
+    // extract post from the document
+    let postFromAngular: Post;
+    document.get().subscribe(snapshot => {
+      postFromAngular = snapshot.data() as Post;
+    });
+
+    return new Promise<Post>((resolve, reject) => {
+      if (!postFromAngular) {
+        resolve(t)
+      } else if (postFromAngular) {
+        reject(t)
+      }
+    });
   }
 }
