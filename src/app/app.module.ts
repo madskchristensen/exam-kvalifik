@@ -20,6 +20,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { environment } from '../environments/environment';
 
@@ -50,7 +51,7 @@ import { EditpostComponent } from './components/editpost/editpost.component';
     AngularFirestoreModule,
     BrowserAnimationsModule,
     MatListModule, MatIconModule, MatSidenavModule, MatButtonModule, MatToolbarModule,
-    MatMenuModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatSlideToggleModule,
+    MatMenuModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatSlideToggleModule, MatButtonToggleModule,
     ReactiveFormsModule, 
     FormsModule, MatTableModule,
     NgReduxModule, NgReduxRouterModule.forRoot()

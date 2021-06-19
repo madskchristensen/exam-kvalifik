@@ -49,8 +49,7 @@
     width: 175px;
     height: 60px;
     margin-left: 1.5em;
-    margin-top: 1em;
-}
+ }
 
 #button-group {
     padding-bottom: 5em;
@@ -98,3 +97,15 @@
     float: right;
     line-height: 1.5;
 }
+
+.mat-button-toggle {
+    background-color: rgb(98, 54, 168);
+    color: white;
+  }
+  .mat-button-toggle-checked {
+    background-color:adjust-hue($color: #48018b, $degrees: 10)
+}
+
+  .mat-button-toggle-group {
+      border: 0;
+  }
