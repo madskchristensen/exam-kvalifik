@@ -29,11 +29,12 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HeaderComponent } from './components/header/header.component';
 import { NewpostComponent } from './components/newpost/newpost.component';
-import {DevToolsExtension, NgRedux, NgReduxModule} from "@angular-redux/store";
-import {AppState, rootReducer} from "./store/Store";
-import {NgReduxRouter, NgReduxRouterModule} from "@angular-redux/router";
+import { DevToolsExtension, NgRedux, NgReduxModule } from "@angular-redux/store";
+import { AppState, rootReducer } from "./store/Store";
+import { NgReduxRouter, NgReduxRouterModule } from "@angular-redux/router";
 import { EditpostComponent } from './components/editpost/editpost.component';
 import {HttpClientModule} from "@angular/common/http";
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import {HttpClientModule} from "@angular/common/http";
     FormsModule, MatTableModule,
     HttpClientModule,
     NgReduxModule, NgReduxRouterModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
