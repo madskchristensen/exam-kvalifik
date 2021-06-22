@@ -62,6 +62,8 @@ export class EditpostComponent implements OnInit {
       if (document.activeElement?.getAttribute("name") === "delete-button") {
         // delete post
         this.postActions.deletePost(this.postToBeEdited);
+        this.toastr.success('', 'Post deleted succesfully!');
+
       }
       else {
         // set pinned to false if null
