@@ -11,8 +11,7 @@
     role="navigation"
     [(opened)]="opened"
     (opened)="events.push('open!')"
-    (closed)="events.push('close!')"
-  >
+    (closed)="events.push('close!')">
     <!-- Selection list -->
     <mat-selection-list [multiple]="false" aria-label="navigation">
       <mat-list-option

@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { PostsComponent } from './components/posts/posts.component';
-import { PostComponent } from './components/post/post.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
@@ -40,7 +39,6 @@ import { ToastrModule } from 'ngx-toastr';
   declarations: [
     AppComponent,
     PostsComponent,
-    PostComponent,
     SidenavComponent,
     HeaderComponent,
     NewpostComponent,

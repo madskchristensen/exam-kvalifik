@@ -20,8 +20,7 @@ export class PostsComponent implements OnInit {
   constructor(private router: Router, private postActions: PostActions, private ngRedux: NgRedux<AppState>) {}
 
   ngOnInit(): void {
-    this.ngRedux.select(state => state.posts).subscribe(res => {res?.posts ? this.posts = res.posts : this.posts = []})
-
+    this.ngRedux.select(state => state.posts).subscribe(res => {res?.posts ? this.posts = res.posts : this.posts = []});
   }
 
   editPost(id: any) {

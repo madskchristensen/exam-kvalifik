@@ -48,7 +48,7 @@ export class PostActions {
   }
 
   updatePost(updatedPost: Post) {
-    this.postService.update(updatedPost).subscribe(res => {
+    this.postService.update(updatedPost).subscribe(() => {
 
       this.ngRedux.dispatch({
         type: PostActions.UPDATE_POST,
@@ -58,7 +58,7 @@ export class PostActions {
   }
 
   deletePost(postToDelete: Post) {
-    this.postService.delete(postToDelete).subscribe(res => {
+    this.postService.delete(postToDelete).subscribe(() => {
 
       this.ngRedux.dispatch({
         type: PostActions.DELETE_POST,
