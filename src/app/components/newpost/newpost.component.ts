@@ -4,6 +4,7 @@ import { Post } from '../../entities/Post';
 import { FormControl } from '@angular/forms';
 import { PostActions } from 'src/app/store/actions/PostActions';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-newpost',
@@ -32,7 +33,7 @@ export class NewpostComponent implements OnInit {
   // to be filled from organisations db. Placeholder atm.
   organisationList: string[] = ['CBS Diversity and Inclusion', 'CBS Icelandic Student Association', "CBS Finance Competition"];
 
-  constructor(private fb: FormBuilder, private postActions: PostActions, private router: Router) { 
+  constructor(private fb: FormBuilder, private postActions: PostActions, private router: Router, private toastr: ToastrService) { 
   }
 
   ngOnInit(): void {     
@@ -44,7 +45,7 @@ export class NewpostComponent implements OnInit {
       title: [this.postToBeCreated.title, Validators.required],
       text: [this.postToBeCreated.text, Validators.required],
       pinned: [this.postToBeCreated.pinned],
-      mediaType: [this.postToBeCreated.mediaType, Validators.required]
+      mediaType: [this.postToBeCreated.mediaType]
     });
   }
   
@@ -56,6 +57,11 @@ export class NewpostComponent implements OnInit {
       // set pinned to false if null 
       if (!this.newPostFormGroup.value.pinned) {
         this.newPostFormGroup.value.pinned = false;
+      }
+
+      // set mediatype to "None" if null
+      if (!this.newPostFormGroup.value.mediaType) {
+        this.newPostFormGroup.value.mediaType = "None";
       }
 
       // attach FormGroup info to empoty post objects
@@ -85,8 +91,12 @@ export class NewpostComponent implements OnInit {
       this.postActions.addPost(this.postToBeCreated);
 
       // redirect
+      this.toastr.success('', 'Post saved succesfully!');
       this.router.navigate(['posts']);
 
+    }
+    else {
+      this.toastr.error('Please check if you have filled out all mandatory fileds in the form', 'Error!')
     }
   }
 }
