@@ -1,49 +1,40 @@
 import { Injectable } from '@angular/core';
-import {Observable, empty} from 'rxjs';
+import {Observable} from 'rxjs';
 import { Post } from 'src/app/entities/Post';
 import { IService } from 'src/app/services/IService';
-import {AppState} from "../../store/Store";
-import {NgRedux} from "@angular-redux/store";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
+import {ServiceUtil} from "../ServiceUtil";
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class PostService  {
+export class PostService implements IService<Post>{
   collection: string = "posts.json";
-  url: string = environment.firebase.databaseURL + this.collection
+  collectionUrl: string = environment.firebase.databaseURL + "/" + this.collection;
 
-  constructor(private http: HttpClient, private ngRedux: NgRedux<AppState>) {
+  constructor(private http: HttpClient) {
 
   }
 
-  private getHttpOptions() {
-    return {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
+  add(t: Post): Observable<Post> {
+    return this.http.post(this.collectionUrl, t, ServiceUtil.getHttpOptions()) as Observable<Post>;
   }
 
-  getAll(): Observable<any> {
-    return this.http.get(this.url, this.getHttpOptions());
+  delete(t: Post): Observable<Post> {
+    const deleteUrl = environment.firebase.databaseURL + "/posts/" + t.id + ".json";
+
+    return this.http.delete(deleteUrl, ServiceUtil.getHttpOptions()) as Observable<Post>;
   }
 
-  add(t: Post): Observable<any> {
-    return this.http.post(this.url, t, this.getHttpOptions());
+  getAll(): Observable<Post> {
+    return this.http.get(this.collectionUrl, ServiceUtil.getHttpOptions()) as Observable<Post>;
   }
 
-  update(t: Post): Observable<any> {
-    let updateUrl = environment.firebase.databaseURL + "posts/" + t.id + ".json";
+  update(t: Post): Observable<Post> {
+    const updateUrl = environment.firebase.databaseURL + "/posts/" + t.id + ".json";
 
-    return this.http.patch(updateUrl, t, this.getHttpOptions());
-  }
-
-  delete(t: Post): Observable<any> {
-    let deleteUrl = environment.firebase.databaseURL + "posts/" + t.id + ".json";
-
-    return this.http.delete(deleteUrl, this.getHttpOptions());
+    return this.http.patch(updateUrl, t, ServiceUtil.getHttpOptions()) as Observable<Post>;
   }
 }
