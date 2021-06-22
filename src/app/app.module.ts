@@ -34,6 +34,7 @@ import { AppState, rootReducer } from "./store/Store";
 import { NgReduxRouter, NgReduxRouterModule } from "@angular-redux/router";
 import { EditpostComponent } from './components/editpost/editpost.component';
 import { ToastrModule } from 'ngx-toastr';
+import { NeweventComponent } from './newevent/newevent.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ToastrModule } from 'ngx-toastr';
     SidenavComponent,
     HeaderComponent,
     NewpostComponent,
-    EditpostComponent
+    EditpostComponent,
+    NeweventComponent
   ],
   imports: [
     BrowserModule,
