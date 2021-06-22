@@ -11,9 +11,11 @@ export const posts = [];
 //   {id: '4', title: "test4", text: "hmmm", published: true, pinned: true } as Post,
 // ];
 
-const INITIAL_STATE: PostState = { posts: posts };
+const INITIAL_STATE: PostState = { posts };
 
 export function postReducer(state: PostState = INITIAL_STATE, action: any) {
+/*  console.log("state", state);*/
+
   switch (action.type) {
     case PostActions.ADD_POST:
       return tassign(state, { posts: [...state.posts, action.payload] });
@@ -24,6 +26,7 @@ export function postReducer(state: PostState = INITIAL_STATE, action: any) {
         (post) => post.id === action.payload.id
       );
       newArray[index] = action.payload;
+
       return tassign(state, { posts: newArray });
 
     case PostActions.READ_POSTS:

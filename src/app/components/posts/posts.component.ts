@@ -16,13 +16,14 @@ export class PostsComponent implements OnInit {
   postClicked: EventEmitter<any> = new EventEmitter<any>();
 
   displayedColumns: string[] = ['title', 'created', 'type', 'status','edit'];
+
   constructor(private router: Router, private postActions: PostActions, private ngRedux: NgRedux<AppState>) {}
 
   ngOnInit(): void {
-    this.postActions.readPosts()
     this.ngRedux.select(state => state.posts).subscribe(res => {res?.posts ? this.posts = res.posts : this.posts = []})
-    
+
   }
+
   editPost(id: any) {
     this.postClicked.emit(id);
 

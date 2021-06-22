@@ -33,6 +33,7 @@ import { DevToolsExtension, NgRedux, NgReduxModule } from "@angular-redux/store"
 import { AppState, rootReducer } from "./store/Store";
 import { NgReduxRouter, NgReduxRouterModule } from "@angular-redux/router";
 import { EditpostComponent } from './components/editpost/editpost.component';
+import {HttpClientModule} from "@angular/common/http";
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -53,9 +54,10 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     MatListModule, MatIconModule, MatSidenavModule, MatButtonModule, MatToolbarModule,
     MatMenuModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatSlideToggleModule, MatButtonToggleModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     FormsModule, MatTableModule,
-    NgReduxModule, NgReduxRouterModule.forRoot(),
+    HttpClientModule,
+    NgReduxModule, NgReduxRouterModule.forRoot()
     ToastrModule.forRoot(),
   ],
   providers: [],

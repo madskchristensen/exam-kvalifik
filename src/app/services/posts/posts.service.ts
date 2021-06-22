@@ -1,108 +1,49 @@
 import { Injectable } from '@angular/core';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-  AngularFirestoreDocument, DocumentReference
-} from '@angular/fire/firestore';
-import {from, Observable} from 'rxjs';
+import {Observable, empty} from 'rxjs';
 import { Post } from 'src/app/entities/Post';
 import { IService } from 'src/app/services/IService';
-import { map } from 'rxjs/operators';
-import { isEqual } from "lodash";
+import {AppState} from "../../store/Store";
+import {NgRedux} from "@angular-redux/store";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class PostService implements IService<Post> {
-  collection!: AngularFirestoreCollection<Post>;
-  list: Observable<Post[]>;
-  collectionName: string = 'posts';
+export class PostService  {
+  collection: string = "posts.json";
+  url: string = environment.firebase.databaseURL + this.collection
 
-  constructor(public db: AngularFirestore) {
-    this.collection = db.collection<Post>(
-      this.collectionName
-    );
-    this.list = this.collection
-      .snapshotChanges()
-      .pipe(
-        map((snaps) =>
-          snaps.map((snap) => {
-            const data = snap.payload.doc.data() as Post;
-            data.id = snap.payload.doc.id;
-            return data;
-          })
-        )
-      );
-  }
-  getAll(): Observable<Post[]> {
-    return this.list;
+  constructor(private http: HttpClient, private ngRedux: NgRedux<AppState>) {
+
   }
 
-  add(t: Post): Promise<Post> {
-    let postFromFirestore: Post;
-
-    this.collection.add(t)
-      .then(document => {
-        document.get()
-          .then(snapshot => {
-            postFromFirestore = snapshot.data() as Post;
-          })
+  private getHttpOptions() {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
       })
-
-    return new Promise<Post>((resolve, reject) => {
-      if (postFromFirestore) {
-        resolve(postFromFirestore)
-      } else {
-        reject(postFromFirestore)
-      }
-    });
+    };
   }
 
-  // https://stackoverflow.com/questions/34660265/importing-lodash-into-angular2-typescript-application
-  update(t: Post): Promise<Post> {
-    // get document with same id as t from firebase
-    let document: AngularFirestoreDocument<Post> = this.db.doc(
-      `${this.collectionName}/${t.id}`
-    );
-
-    document.update(t)
-
-    // extract post from the document
-    let postFromAngular: Post;
-    document.get().subscribe(snapshot => {
-      postFromAngular = snapshot.data() as Post;
-    });
-
-    return new Promise<Post>((resolve, reject) => {
-      if (isEqual(t, postFromAngular)) {
-        resolve(t)
-      } else if (!isEqual(t, postFromAngular)) {
-        reject(postFromAngular)
-      }
-    });
+  getAll(): Observable<any> {
+    return this.http.get(this.url, this.getHttpOptions());
   }
 
-  delete(t: Post): Promise<Post> {
-    // get document with same id as t from firebase
-    let document: AngularFirestoreDocument<Post> = this.db.doc(
-      `${this.collectionName}/${t.id}`
-    );
+  add(t: Post): Observable<any> {
+    return this.http.post(this.url, t, this.getHttpOptions());
+  }
 
-    document.delete();
+  update(t: Post): Observable<any> {
+    let updateUrl = environment.firebase.databaseURL + "posts/" + t.id + ".json";
 
-    // extract post from the document
-    let postFromAngular: Post;
-    document.get().subscribe(snapshot => {
-      postFromAngular = snapshot.data() as Post;
-    });
+    return this.http.patch(updateUrl, t, this.getHttpOptions());
+  }
 
-    return new Promise<Post>((resolve, reject) => {
-      if (!postFromAngular) {
-        resolve(t)
-      } else if (postFromAngular) {
-        reject(t)
-      }
-    });
+  delete(t: Post): Observable<any> {
+    let deleteUrl = environment.firebase.databaseURL + "posts/" + t.id + ".json";
+
+    return this.http.delete(deleteUrl, this.getHttpOptions());
   }
 }
