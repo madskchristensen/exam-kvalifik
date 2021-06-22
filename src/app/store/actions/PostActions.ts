@@ -36,7 +36,6 @@ export class PostActions {
     this.postService.getAll().subscribe((res: any) => {
       // service returns json tree containing all posts -> convert to array
       for (let id in res) {
-        console.log(id);
         res[id].id = id // add id property to every post object
         posts.push(res[id] as Post) // add post to post array
       }
@@ -49,10 +48,22 @@ export class PostActions {
   }
 
   updatePost(updatedPost: Post) {
+    this.postService.update(updatedPost).subscribe(res => {
 
+      this.ngRedux.dispatch({
+        type: PostActions.UPDATE_POST,
+        payload: updatedPost
+      })
+    });
   }
 
   deletePost(postToDelete: Post) {
+    this.postService.delete(postToDelete).subscribe(res => {
 
+      this.ngRedux.dispatch({
+        type: PostActions.DELETE_POST,
+        payload: postToDelete
+      })
+    });
   }
 }

@@ -36,10 +36,14 @@ export class PostService  {
   }
 
   update(t: Post): Observable<any> {
-    return empty();
+    let updateUrl = environment.firebase.databaseURL + "posts/" + t.id + ".json";
+
+    return this.http.patch(updateUrl, t, this.getHttpOptions());
   }
 
   delete(t: Post): Observable<any> {
-    return empty();
+    let deleteUrl = environment.firebase.databaseURL + "posts/" + t.id + ".json";
+
+    return this.http.delete(deleteUrl, this.getHttpOptions());
   }
 }
