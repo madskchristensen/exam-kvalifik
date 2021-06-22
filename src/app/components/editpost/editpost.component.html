@@ -12,20 +12,26 @@
       </div>
         <!-- Title -->
         <p>
-          <mat-label class="input-label">Title</mat-label>
+          <mat-label class="input-label">Title*</mat-label>
           <br>
           <mat-form-field appearance="outline" class="full-width">
             <input matInput id="titleInput" placeholder="Name your post" formControlName="title">
           </mat-form-field>  
+          <mat-error *ngIf="editPostFormGroup.controls.title.errors?.required && editPostFormGroup.controls.title.touched">
+            You must enter a title
+          </mat-error>
         </p>
         
         <!-- Text -->
         <p>
-          <mat-label class="input-label">Text</mat-label>
+          <mat-label class="input-label">Text*</mat-label>
           <br>
           <mat-form-field appearance="outline" class="full-width">
             <textarea matInput id="textInput" placeholder="Write your new post here..." formControlName="text" rows="14" ></textarea>
           </mat-form-field>   
+          <mat-error *ngIf="editPostFormGroup.controls.text.errors?.required && editPostFormGroup.controls.text.touched">
+            You must enter text
+          </mat-error>
         </p>
   
         <!-- Media -->

@@ -6,6 +6,7 @@ import { PostActions } from 'src/app/store/actions/PostActions';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgRedux } from '@angular-redux/store';
 import { AppState } from 'src/app/store/Store';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-editpost',
@@ -32,7 +33,7 @@ export class EditpostComponent implements OnInit {
   // to be filled from organisations db. Placeholder atm.
   organisationList: string[] = ['CBS Diversity and Inclusion', 'CBS Icelandic Student Association', "CBS Finance Competition"];
 
-  constructor(private fb: FormBuilder, private postActions: PostActions, private router: Router, private route: ActivatedRoute,
+  constructor(private fb: FormBuilder, private postActions: PostActions, private router: Router, private toastr: ToastrService, private route: ActivatedRoute,
     private ngRedux: NgRedux<AppState>) { }
 
   ngOnInit(): void {   
@@ -50,7 +51,7 @@ export class EditpostComponent implements OnInit {
       title: [this.postToBeEdited.title, Validators.required],
       text: [this.postToBeEdited.text, Validators.required],
       pinned: [this.postToBeEdited.pinned],
-      mediaType: [this.postToBeEdited.mediaType, Validators.required]
+      mediaType: [this.postToBeEdited.mediaType]
     });
   }
 
@@ -66,6 +67,11 @@ export class EditpostComponent implements OnInit {
         // set pinned to false if null
         if (!this.editPostFormGroup.value.pinned) {
           this.editPostFormGroup.value.pinned = false;
+        }
+
+        // set mediatype to "None" if null
+        if (!this.editPostFormGroup.value.mediaType) {
+          this.editPostFormGroup.value.mediaType = "None";
         }
 
         // add postFormGroup elements to 
@@ -84,10 +90,15 @@ export class EditpostComponent implements OnInit {
 
         // add post to DB
         this.postActions.updatePost(this.postToBeEdited);
+        this.toastr.success('', 'Post saved succesfully!');
+
       }
-      
+  
       // redirect
       this.router.navigate(['posts']);
+    }
+    else {
+      this.toastr.error('Please check if you have filled out all mandatory fileds in the form', 'Error!')
     }
   }
 }
