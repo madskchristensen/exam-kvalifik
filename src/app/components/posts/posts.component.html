@@ -1,10 +1,20 @@
+<div id="post-filter">
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="search"
+      placeholder="Search a post"
+    />
+  </mat-form-field>
+</div>
 <div id="post-header">
   <h1>Posts</h1>
   <button routerLink="/new-post" id="new-btn" mat-raised-button color="primary">
     New post <mat-icon>add</mat-icon>
   </button>
 </div>
-<table mat-table [dataSource]="posts">
+<table mat-table [dataSource]="posts | filterPosts: search">
   <ng-container matColumnDef="title">
     <th mat-header-cell *matHeaderCellDef>Title</th>
     <td mat-cell *matCellDef="let post">

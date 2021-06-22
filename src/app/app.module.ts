@@ -35,6 +35,7 @@ import { NgReduxRouter, NgReduxRouterModule } from "@angular-redux/router";
 import { EditpostComponent } from './components/editpost/editpost.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ToastrModule } from 'ngx-toastr';
+import { PostsPipe } from './pipes/posts/posts.pipe';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ToastrModule } from 'ngx-toastr';
     SidenavComponent,
     HeaderComponent,
     NewpostComponent,
-    EditpostComponent
+    EditpostComponent,
+    PostsPipe
   ],
   imports: [
     BrowserModule,
