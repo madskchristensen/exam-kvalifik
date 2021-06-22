@@ -57,7 +57,7 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     FormsModule, MatTableModule,
     HttpClientModule,
-    NgReduxModule, NgReduxRouterModule.forRoot()
+    NgReduxModule, NgReduxRouterModule.forRoot(),
     ToastrModule.forRoot(),
   ],
   providers: [],
