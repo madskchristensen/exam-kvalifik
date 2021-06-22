@@ -33,6 +33,7 @@ import {DevToolsExtension, NgRedux, NgReduxModule} from "@angular-redux/store";
 import {AppState, rootReducer} from "./store/Store";
 import {NgReduxRouter, NgReduxRouterModule} from "@angular-redux/router";
 import { EditpostComponent } from './components/editpost/editpost.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -52,8 +53,9 @@ import { EditpostComponent } from './components/editpost/editpost.component';
     BrowserAnimationsModule,
     MatListModule, MatIconModule, MatSidenavModule, MatButtonModule, MatToolbarModule,
     MatMenuModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatSlideToggleModule, MatButtonToggleModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     FormsModule, MatTableModule,
+    HttpClientModule,
     NgReduxModule, NgReduxRouterModule.forRoot()
   ],
   providers: [],
