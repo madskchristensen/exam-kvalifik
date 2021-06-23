@@ -20,7 +20,7 @@
     </mat-form-field>
   </div>
   
-  <mat-table [dataSource]="collections"> <!-- TO DO: ADD | tableFilter: search-->
+  <mat-table [dataSource]="collections | tableFilter: search">
       <ng-container matColumnDef="title">
           <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
           <mat-cell *matCellDef="let collection">

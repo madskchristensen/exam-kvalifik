@@ -26,6 +26,7 @@ export class CollectionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.collectionActions.readCollections();
     this.ngRedux
       .select((state) => state.collections)
       .subscribe((res) => {

@@ -21,7 +21,7 @@
   
 </div>
 
-<mat-table [dataSource]="posts | filterPosts: search">
+<mat-table [dataSource]="posts | tableFilter: search">
     <ng-container matColumnDef="title">
         <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
         <mat-cell *matCellDef="let post">
