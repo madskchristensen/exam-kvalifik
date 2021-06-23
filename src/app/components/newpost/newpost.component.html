@@ -16,23 +16,23 @@
         <br>
         <mat-form-field appearance="outline" class="full-width">
           <input matInput id="titleInput" placeholder="Name your post" formControlName="title">
-        </mat-form-field>  
+        </mat-form-field>
         <mat-error *ngIf="newPostFormGroup.controls.title.errors?.required && newPostFormGroup.controls.title.touched">
           You must enter a title
         </mat-error>
 
       </p>
-      
+
       <!-- Text -->
       <p>
         <mat-label class="input-label">Text*</mat-label>
         <br>
         <mat-form-field appearance="outline" class="full-width">
           <textarea matInput id="textInput" placeholder="Write your new post here..." formControlName="text" rows="14" ></textarea>
-        </mat-form-field> 
+        </mat-form-field>
         <mat-error *ngIf="newPostFormGroup.controls.text.errors?.required && newPostFormGroup.controls.text.touched">
           You must enter text
-        </mat-error>  
+        </mat-error>
       </p>
 
       <!-- Media -->
@@ -44,16 +44,16 @@
       <!-- TO DO: Round corners, center text -->
       <div id="button-group">
         <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="mediaType" >
-          <mat-button-toggle value="PHOTO" class="media-button" color="primary">          
+          <mat-button-toggle value="PHOTO" class="media-button" color="primary">
             <mat-icon matListIcon aria-hidden="false" aria-label="back">image</mat-icon>
             Photo(s)
           </mat-button-toggle>
 
-          <mat-button-toggle value="VIDEO" class="media-button">          
+          <mat-button-toggle value="VIDEO" class="media-button">
             <mat-icon matListIcon aria-hidden="false" aria-label="back">smart_display</mat-icon>
             Video</mat-button-toggle>
-            
-          <mat-button-toggle value="PODCAST" class="media-button">          
+
+          <mat-button-toggle value="PODCAST" class="media-button">
             <mat-icon matListIcon aria-hidden="false" aria-label="back">podcasts</mat-icon>
             Podcast</mat-button-toggle>
         </mat-button-toggle-group>
@@ -79,10 +79,10 @@
       <mat-label class="bigger-input-label">Pinned</mat-label>
       <br>
       <p class="sub-text">
-        You can pin one post or event to the top of the page. 
+        You can pin one post or event to the top of the page.
       </p>
       <div id="slide-toggle">
-        <mat-slide-toggle formControlName="pinned"></mat-slide-toggle>
+        <mat-slide-toggle color="primary" formControlName="pinned"></mat-slide-toggle>
         <br>
       </div>
 
@@ -107,7 +107,7 @@
        <br>
        <p class="sub-text">
           Invite another student organisation to collaborate on content creation.<br>
-          A co-creator will be listed as co-author of the content and the content will show up on their page and feed, but they can't edit the content. 
+          A co-creator will be listed as co-author of the content and the content will show up on their page and feed, but they can't edit the content.
       </p>
       <div id="drop-down-wrapper">
         <mat-form-field appearance="outline" class="full-width">

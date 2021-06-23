@@ -4,7 +4,7 @@
       <span class="icon-text">Back</span>
     </div>
   </div>
-  
+
   <div id="wrapper-div">
     <form [formGroup]="editEventFormGroup" (ngSubmit)="editEvent()">
       <div>
@@ -16,12 +16,12 @@
           <br>
           <mat-form-field appearance="outline" class="full-width">
             <input matInput id="titleInput" placeholder="Name your event" formControlName="title">
-          </mat-form-field>  
+          </mat-form-field>
           <mat-error *ngIf="editEventFormGroup.controls.title.errors?.required && editEventFormGroup.controls.title.touched">
             You must enter a title
           </mat-error>
         </p>
-        
+
         <!-- Insert start date and time here -->
         <div>
                 <mat-label class="bigger-input-label">Start date*</mat-label>
@@ -30,11 +30,11 @@
                   <input matInput [matDatepicker]="start_picker" [min]="minDate" placeholder="Choose start date" formControlName="startDate">
                   <mat-datepicker-toggle matSuffix [for]="start_picker"></mat-datepicker-toggle>
                   <mat-datepicker #start_picker></mat-datepicker>
-                </mat-form-field>  
+                </mat-form-field>
 
                 <mat-form-field appearance="outline" class="date-field">
                     <input matInput [ngxMatTimepicker]="startTime"  [format]="24" placeholder="Starting time" formControlName="startTime"/>
-                </mat-form-field> 
+                </mat-form-field>
                 <ngx-mat-timepicker #startTime [minutesGap]="5"></ngx-mat-timepicker>
 
                 <mat-error *ngIf="editEventFormGroup.controls.startDate.errors?.required && editEventFormGroup.controls.startDate.touched">
@@ -53,11 +53,11 @@
               <input matInput [matDatepicker]="end_picker" [min]="editEventFormGroup.controls.startDate.value" placeholder="Choose end date" formControlName="endDate">
               <mat-datepicker-toggle matSuffix [for]="end_picker"></mat-datepicker-toggle>
               <mat-datepicker #end_picker></mat-datepicker>
-            </mat-form-field>  
+            </mat-form-field>
 
             <mat-form-field appearance="outline" class="date-field">
                 <input matInput [ngxMatTimepicker]="endTime"  [format]="24" placeholder="End time" formControlName="endTime"/>
-            </mat-form-field> 
+            </mat-form-field>
             <ngx-mat-timepicker #endTime [minutesGap]="5"></ngx-mat-timepicker>
 
             <mat-error *ngIf="editEventFormGroup.controls.endDate.errors?.required && editEventFormGroup.controls.endDate.touched">
@@ -74,7 +74,7 @@
           <br>
           <mat-form-field appearance="outline" class="full-width">
             <textarea matInput placeholder="Enter a description of the event" formControlName="description" rows="10"></textarea>
-          </mat-form-field>  
+          </mat-form-field>
           <mat-error *ngIf="editEventFormGroup.controls.description.errors?.required && editEventFormGroup.controls.description.touched">
             You must enter a description
           </mat-error>
@@ -86,7 +86,7 @@
             <br>
             <mat-form-field appearance="outline" class="full-width">
               <textarea matInput placeholder="Enter the schedule of the event" formControlName="schedule" rows="3"></textarea>
-            </mat-form-field>  
+            </mat-form-field>
             <mat-error *ngIf="editEventFormGroup.controls.schedule.errors?.required && editEventFormGroup.controls.schedule.touched">
               You must enter a schedule
             </mat-error>
@@ -98,11 +98,11 @@
             <mat-label class="bigger-input-label">Location</mat-label>
             <br>
             <p class="sub-text">
-                If you need to book a room on campus, you first have to publish the event.After that, you will be able to fill in a booking form and request a room. 
+                If you need to book a room on campus, you first have to publish the event.After that, you will be able to fill in a booking form and request a room.
               </p>
             <mat-form-field appearance="outline" class="full-width">
                 <input matInput id="locationInput" placeholder="Name your event" formControlName="location">
-            </mat-form-field>  
+            </mat-form-field>
             <mat-error *ngIf="editEventFormGroup.controls.location.errors?.required && editEventFormGroup.controls.location.touched">
                 You must enter a location
             </mat-error>
@@ -122,20 +122,20 @@
             </mat-select>
           </mat-form-field>
         </div>
-  
-  
+
+
         <!-- Pinned -->
         <mat-label class="bigger-input-label">Pinned</mat-label>
         <br>
         <p class="sub-text">
-          You can pin one post or event to the top of the page. 
+          You can pin one post or event to the top of the page.
         </p>
         <div id="slide-toggle">
-          <mat-slide-toggle formControlName="pinned"></mat-slide-toggle>
+          <mat-slide-toggle color="primary" formControlName="pinned"></mat-slide-toggle>
           <br>
         </div>
-  
-  
+
+
         <!-- Responsible -->
         <mat-label class="bigger-input-label">Responsible</mat-label>
         <br>
@@ -150,13 +150,13 @@
             </mat-select>
           </mat-form-field>
         </div>
-  
+
          <!-- Collaboration -->
          <mat-label class="bigger-input-label">Collaboration</mat-label>
          <br>
          <p class="sub-text">
             Invite another student organisation to collaborate on content creation.<br>
-            A co-creator will be listed as co-author of the content and the content will show up on their page and feed, but they can't edit the content. 
+            A co-creator will be listed as co-author of the content and the content will show up on their page and feed, but they can't edit the content.
         </p>
         <div id="drop-down-wrapper">
           <mat-form-field appearance="outline" class="full-width">
@@ -166,15 +166,15 @@
              </mat-select>
            </mat-form-field>
          </div>
-  
+
          <mat-divider></mat-divider>
-  
+
          <div id="final-button-group">
             <button mat-stroked-button id="save-button" name="save-button">
               Save draft
               <mat-icon matListIcon aria-hidden="false" aria-label="back" class="icon-right">save</mat-icon>
             </button>
-  
+
             <button mat-flat-button id="publish-button" name="publish-button">
               Publish post
               <mat-icon matListIcon aria-hidden="false" aria-label="back" class="icon-right">text_snippet</mat-icon>
@@ -186,5 +186,4 @@
           </div>
       </form>
   </div>
-  
-  
+
