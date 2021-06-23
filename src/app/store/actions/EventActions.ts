@@ -3,7 +3,6 @@ import {NgRedux} from "@angular-redux/store";
 import {AppState} from "../Store";
 import {EventsService} from "../../services/events/events.service";
 import {Event} from "../../entities/Event";
-import {Post} from "../../entities/Post";
 
 @Injectable({ providedIn: "root" })
 export class EventActions {
