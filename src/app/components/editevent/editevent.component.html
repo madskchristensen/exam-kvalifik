@@ -118,7 +118,7 @@
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Select collections</mat-label>
             <mat-select [formControl]="collections" multiple>
-              <mat-option *ngFor="let collection of collectionList" [value]="collection">{{collection}}</mat-option>
+              <mat-option *ngFor="let collection of collectionList" [value]="collection.title">{{collection.title}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>

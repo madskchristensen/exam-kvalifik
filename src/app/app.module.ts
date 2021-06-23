@@ -80,6 +80,7 @@ import { EditcollectionComponent } from './components/editcollection/editcollect
         MatMenuModule,
         MatFormFieldModule,
         MatInputModule,
+        MatButtonModule,
         MatSelectModule,
         MatSlideToggleModule,
         MatButtonToggleModule,

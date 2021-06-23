@@ -49,9 +49,14 @@
     width: 175px;
     height: 60px;
     margin-left: 1.5em;
-  display: flex;
-  align-items: center;
- }
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.media-button mat-icon {
+  padding-right: 6px;
+}
 
 #button-group {
     padding-bottom: 5em;
