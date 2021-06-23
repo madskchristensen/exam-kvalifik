@@ -3,12 +3,6 @@ import { PostState } from '../Store';
 import { PostActions } from '../actions/PostActions';
 
 export const posts = [];
-// export const posts = [
-//   {id: '1', title: "test1", text: "hmmm", published: false, pinned: false } as Post,
-//   {id: '2', title: "test2", text: "hmmm", published: false, pinned: false } as Post,
-//   {id: '3', title: "test3", text: "hmmm", published: false, pinned: false } as Post,
-//   {id: '4', title: "test4", text: "hmmm", published: true, pinned: true } as Post,
-// ];
 
 const INITIAL_STATE: PostState = { posts };
 

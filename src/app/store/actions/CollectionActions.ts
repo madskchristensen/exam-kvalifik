@@ -16,18 +16,52 @@ export class CollectionActions {
   static DELETE_COLLECTION: string = "DELETE_COLLECTION";
 
   addCollection(newCollection: Collection) {
+    this.collectionsService.add(newCollection).subscribe((res: any) => {
 
-  }
+      // res contains the documents id in firebase, so add this as a property to the post object.
+      newCollection.id = res.name;
 
-  updateCollection(updatedCollection: Collection) {
-
+      this.ngRedux.dispatch({
+        type: CollectionActions.ADD_COLLECTION,
+        payload: newCollection
+      });
+    });
   }
 
   readCollections() {
+    let collections: Collection[] = [];
 
+    this.collectionsService.getAll().subscribe((res: any) => {
+      // service returns json tree containing all posts -> convert to array
+      for (let id in res) {
+        res[id].id = id // add id property to every post object
+        collections.push(res[id] as Collection) // add post to post array
+      }
+
+      this.ngRedux.dispatch({
+        type: CollectionActions.READ_COLLECTIONS,
+        payload: collections
+      });
+    });
+  }
+
+  updateCollection(updatedCollection: Collection) {
+    this.collectionsService.update(updatedCollection).subscribe(() => {
+
+      this.ngRedux.dispatch({
+        type: CollectionActions.UPDATE_COLLECTION,
+        payload: updatedCollection
+      });
+    });
   }
 
   deleteCollection(collectionToDelete: Collection) {
+    this.collectionsService.delete(collectionToDelete).subscribe(() => {
 
+      this.ngRedux.dispatch({
+        type: CollectionActions.DELETE_COLLECTION,
+        payload: collectionToDelete
+      });
+    });
   }
 }
