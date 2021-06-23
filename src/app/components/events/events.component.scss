@@ -1,6 +1,34 @@
-/*
-.material-icons{
-    display: inline-flex;
-    vertical-align: top;
-    line-height: 0.8;
+.material-icons {
+  padding-right: 5px;
+  padding-left: 0;
+}
+
+/*.mat-cell, .mat-header-cell, .mat-footer-cell {
+  justify-content: flex-end!important;
 }*/
+
+.mat-cell-edit {
+  justify-content: flex-end!important;
+}
+
+.mat-column-title {
+  flex-grow: 3;
+}
+
+.mat-column-startDate {
+  flex-grow: 3;
+}
+
+.mat-column-endDate {
+  flex-grow: 3;
+}
+
+.mat-column-location {
+  flex-grow: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-column-status {
+  flex-grow: 2;
+}

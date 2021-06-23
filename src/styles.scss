@@ -38,10 +38,6 @@ mat-table {
   align-items: center;
 }
 
-.mat-column-title {
-  flex-basis: 40%;
-}
-
 .mat-row:hover {
   background-color: #eeeeee;
 }
@@ -49,12 +45,19 @@ mat-table {
 .mat-row, .mat-header-row {
   border-bottom: none;
   flex: 1;
+  justify-content: center;
 }
 
 .mat-header-cell {
   font-size: 1rem;
   color: #333333;
   font-weight: bold;
+}
+
+.mat-column-edit {
+  justify-content: flex-end;
+  flex-grow: 0;
+  flex-basis: 5%;
 }
 
 .status-div {
