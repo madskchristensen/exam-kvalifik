@@ -1,5 +1,8 @@
 .mat-column-title {
-  flex-grow: 4;
+    flex-grow: 4;
+}
+.mat-column-edit {
+    flex-grow: 0.5;
 }
 
 #post-filter {
