@@ -1,0 +1,69 @@
+<div id="component-header">
+  <h1 id="component-title">Events</h1>
+  <button routerLink="/new-post" id="new-btn" mat-raised-button color="primary">
+    <div>
+      <span>New event</span>
+      <mat-icon>add_circle</mat-icon>
+    </div>
+  </button>
+</div>
+
+  <mat-table [dataSource]="events">
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+      <mat-cell *matCellDef="let event">
+        {{ event.title ? event.title : 'N/A' }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="startDate">
+      <mat-header-cell mat-header-cell *matHeaderCellDef>Start date</mat-header-cell>
+      <mat-cell *matCellDef="let event">
+        <!--Only start date for now. Fix after action is ready -->
+        <mat-icon>schedule</mat-icon>
+        {{ event.startTime  ? event.startTime : 'N/A' }},
+        {{ event.startDate  ? (event.startDate | date :  "fullDate") : 'N/A' }}
+
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="endDate">
+        <mat-header-cell *matHeaderCellDef>End date</mat-header-cell>
+        <mat-cell *matCellDef="let event">
+          <!--Only start date for now. Fix after action is ready -->
+          <mat-icon>schedule</mat-icon>
+          {{ event.endTime  ? event.endTime : 'N/A' }},
+          {{ event.startDate  ? (event.startDate | date :  "fullDate") : 'N/A' }}
+        </mat-cell>
+      </ng-container>
+
+    <ng-container matColumnDef="location">
+      <mat-header-cell *matHeaderCellDef>Location</mat-header-cell>
+      <mat-cell *matCellDef="let event">
+        <mat-icon>location_on</mat-icon>
+        {{ event.location ? event.location : 'N/A' }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+      <mat-cell *matCellDef="let event">
+        <div class="status-div" [ngClass]="{'published' : event.published === true, 'draft' : event.published === false}">
+          {{ event.published ? 'PUBLISHED' : 'DRAFT' }}
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let event">
+        <button (click)="editEvent(event.id)" mat-stroked-button color="primary">
+          Edit
+        </button>
+      </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>

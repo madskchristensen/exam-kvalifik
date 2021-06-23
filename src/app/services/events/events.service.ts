@@ -11,8 +11,8 @@ import {ServiceUtil} from "../ServiceUtil";
 })
 
 export class EventsService implements IService<Event>{
-  collection: string = "events.json";
-  collectionUrl: string = environment.firebase.databaseURL + "/" + this.collection;
+  private collection: string = "events.json";
+  private collectionUrl: string = environment.firebase.databaseURL + "/" + this.collection;
 
   constructor(private http: HttpClient) {
 

@@ -42,10 +42,10 @@ export class NewpostComponent implements OnInit {
 
     // attach information to FormGroup
     this.newPostFormGroup = this.fb.group({
-      title: [this.postToBeCreated.title, Validators.required],
-      text: [this.postToBeCreated.text, Validators.required],
-      pinned: [this.postToBeCreated.pinned],
-      mediaType: [this.postToBeCreated.mediaType]
+      title: ["", Validators.required],
+      text: ["", Validators.required],
+      pinned: "",
+      mediaType: ""
     });
   }
   

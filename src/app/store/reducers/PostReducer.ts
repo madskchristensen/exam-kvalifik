@@ -3,12 +3,6 @@ import { PostState } from '../Store';
 import { PostActions } from '../actions/PostActions';
 
 export const posts = [];
-// export const posts = [
-//   {id: '1', title: "test1", text: "hmmm", published: false, pinned: false } as Post,
-//   {id: '2', title: "test2", text: "hmmm", published: false, pinned: false } as Post,
-//   {id: '3', title: "test3", text: "hmmm", published: false, pinned: false } as Post,
-//   {id: '4', title: "test4", text: "hmmm", published: true, pinned: true } as Post,
-// ];
 
 const INITIAL_STATE: PostState = { posts };
 
@@ -19,6 +13,9 @@ export function postReducer(state: PostState = INITIAL_STATE, action: any) {
     case PostActions.ADD_POST:
       return tassign(state, { posts: [...state.posts, action.payload] });
 
+    case PostActions.READ_POSTS:
+      return tassign(state, { posts: action.payload });
+
     case PostActions.UPDATE_POST:
       const newArray = [...state.posts];
       const index = state.posts.findIndex(
@@ -27,9 +24,6 @@ export function postReducer(state: PostState = INITIAL_STATE, action: any) {
       newArray[index] = action.payload;
 
       return tassign(state, { posts: newArray });
-
-    case PostActions.READ_POSTS:
-      return tassign(state, { posts: action.payload });
 
     case PostActions.DELETE_POST:
       const newArray2 = [...state.posts];
