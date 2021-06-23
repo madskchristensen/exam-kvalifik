@@ -1,62 +1,77 @@
 <div id="post-filter">
-  <mat-form-field>
-    <input
-      matInput
-      type="text"
-      [(ngModel)]="search"
-      placeholder="Search a post"
-    />
-  </mat-form-field>
+    <mat-form-field>
+        <input
+            id="cy_test"
+            matInput
+            type="text"
+            [(ngModel)]="search"
+            placeholder="Search a post"
+        />
+    </mat-form-field>
 </div>
 <div id="post-header">
-  <h1 id="posts-title">Posts</h1>
-  <button routerLink="/new-post" id="new-btn" mat-raised-button color="primary">
-    <div>
-      <span>New post</span>
-      <mat-icon>add_circle</mat-icon>
-    </div>
-  </button>
+    <h1 id="posts-title">Posts</h1>
+    <button
+        routerLink="/new-post"
+        id="new-btn"
+        mat-raised-button
+        color="primary"
+    >
+        <div>
+            <span>New post</span>
+            <mat-icon>add_circle</mat-icon>
+        </div>
+    </button>
 </div>
 <mat-table [dataSource]="posts | filterPosts: search">
-  <ng-container matColumnDef="title">
-    <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
-    <mat-cell *matCellDef="let post">
-      {{ post.title ? post.title : 'N/A' }}
-    </mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+        <mat-cell *matCellDef="let post">
+            {{ post.title ? post.title : 'N/A' }}
+        </mat-cell>
+    </ng-container>
 
-  <ng-container matColumnDef="created">
-    <mat-header-cell *matHeaderCellDef>Created</mat-header-cell>
-    <mat-cell *matCellDef="let post">
-      {{ post.createdAt ? post.createdAt : 'N/A' }}
-    </mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="created">
+        <mat-header-cell *matHeaderCellDef>Created</mat-header-cell>
+        <mat-cell *matCellDef="let post">
+            {{ post.createdAt ? post.createdAt : 'N/A' }}
+        </mat-cell>
+    </ng-container>
 
-  <ng-container matColumnDef="type">
-    <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
-    <mat-cell *matCellDef="let post">
-      {{ post.mediaType ? post.mediaType : 'TEXT' }}
-    </mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+        <mat-cell *matCellDef="let post">
+            {{ post.mediaType ? post.mediaType : 'TEXT' }}
+        </mat-cell>
+    </ng-container>
 
-  <ng-container matColumnDef="status">
-    <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
-    <mat-cell *matCellDef="let post">
-      <div class="status-div" [ngClass]="{'published' : post.published === true, 'draft' : post.published === false}">
-        {{ post.published ? 'PUBLISHED' : 'DRAFT' }}
-      </div>
-    </mat-cell>
-  </ng-container>
-  <!-- TODO: add (click)="editPost(post)"-->
-  <ng-container matColumnDef="edit">
-    <mat-header-cell *matHeaderCellDef></mat-header-cell>
-    <mat-cell *matCellDef="let post">
-      <button (click)="editPost(post.id)" mat-stroked-button color="primary">
-        Edit
-      </button>
-    </mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+        <mat-cell *matCellDef="let post">
+            <div
+                class="status-div"
+                [ngClass]="{
+                    published: post.published === true,
+                    draft: post.published === false
+                }"
+            >
+                {{ post.published ? 'PUBLISHED' : 'DRAFT' }}
+            </div>
+        </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let post">
+            <button
+                (click)="editPost(post.id)"
+                mat-stroked-button
+                color="primary"
+            >
+                Edit
+            </button>
+        </mat-cell>
+    </ng-container>
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>
