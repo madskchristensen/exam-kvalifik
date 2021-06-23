@@ -1,7 +1,7 @@
 <div id="post-header">
     <h1>Events</h1>
     <button routerLink="/new-event" id="new-btn" mat-raised-button color="primary">
-      New event <mat-icon>add</mat-icon>
+      New event <mat-icon id="new-btn-icon">add</mat-icon>
     </button>
   </div>
   <table mat-table [dataSource]="events">
@@ -16,7 +16,10 @@
       <th mat-header-cell *matHeaderCellDef>Start date</th>
       <td mat-cell *matCellDef="let event">
         <!--Only start date for now. Fix after action is ready -->
-        {{ event.start ? event.start : 'N/A' }}
+        <mat-icon>schedule</mat-icon>
+        {{ event.startTime  ? event.startTime : 'N/A' }}, 
+        {{ event.startDate  ? (event.startDate | date :  "fullDate") : 'N/A' }}
+
       </td>
     </ng-container>
 
@@ -24,13 +27,16 @@
         <th mat-header-cell *matHeaderCellDef>End date</th>
         <td mat-cell *matCellDef="let event">
           <!--Only start date for now. Fix after action is ready -->
-          {{ event.end ? event.end : 'N/A' }}
+          <mat-icon>schedule</mat-icon>
+          {{ event.endTime  ? event.endTime : 'N/A' }}, 
+          {{ event.startDate  ? (event.startDate | date :  "fullDate") : 'N/A' }}
         </td>
       </ng-container>
   
     <ng-container matColumnDef="location">
       <th mat-header-cell *matHeaderCellDef>location</th>
       <td mat-cell *matCellDef="let event">
+        <mat-icon>location_on</mat-icon>
         {{ event.location ? event.location : 'N/A' }}
       </td>
     </ng-container>

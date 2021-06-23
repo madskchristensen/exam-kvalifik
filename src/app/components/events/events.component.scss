@@ -9,4 +9,14 @@ table {
     margin: 1rem;
   }
   
-  
+.material-icons{
+    display: inline-flex;
+    vertical-align: top;
+    line-height: 0.8;
+}
+
+#new-btn-icon {
+    display: inline;
+    vertical-align:center !important;
+    line-height: 1.4;
+}
