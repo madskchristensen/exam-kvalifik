@@ -16,7 +16,7 @@ export class NeweventComponent implements OnInit {
 
   public newEventFormGroup!: FormGroup;
   public eventToBeCreated!: Event;
-  
+
   public minDate!: Date;
 
   // collections
@@ -29,14 +29,14 @@ export class NeweventComponent implements OnInit {
   groups = new FormControl();
   // to be filled from group/volunteer db. Placeholder atm.
   groupList: string[] = ['Board of directors', 'Events and social', 'Volunteer nr. 1'];
-  
+
   // organisations
   organisations = new FormControl();
 
   // to be filled from organisations db. Placeholder atm.
   organisationList: string[] = ['CBS Diversity and Inclusion', 'CBS Icelandic Student Association', "CBS Finance Competition"];
 
-  constructor(private fb: FormBuilder, private router: Router, private toastr: ToastrService, private datePipe: DatePipe, private eventActions: EventActions) { 
+  constructor(private fb: FormBuilder, private router: Router, private toastr: ToastrService, private datePipe: DatePipe, private eventActions: EventActions) {
   }
 
   ngOnInit(): void {
@@ -63,7 +63,7 @@ export class NeweventComponent implements OnInit {
 
   submitNewEvent() {
     if (this.newEventFormGroup.valid) {
-      // set pinned to false if null 
+      // set pinned to false if null
       if (!this.newEventFormGroup.value.pinned) {
         this.newEventFormGroup.value.pinned = false;
       }
@@ -76,9 +76,6 @@ export class NeweventComponent implements OnInit {
       const transformedStartDate = this.datePipe.transform(this.newEventFormGroup.value.start, 'M/d/yy');
       const transformedEndDate = this.datePipe.transform(this.newEventFormGroup.value.end, 'M/d/yy');
 
-      // TO DO
-      // Add date time to newEvent object
-      
       // check if save or publish was pressed. As button is pressed the given button will always be the active element
       if (document.activeElement?.getAttribute("name") === "save-button") {
         this.eventToBeCreated.published = false;

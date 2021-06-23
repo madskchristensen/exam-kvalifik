@@ -29,7 +29,7 @@ export class EditeventComponent implements OnInit {
   groups = new FormControl();
   // to be filled from group/volunteer db. Placeholder atm.
   groupList: string[] = ['Board of directors', 'Events and social', 'Volunteer nr. 1'];
-  
+
   // organisations
   organisations = new FormControl();
   // to be filled from organisations db. Placeholder atm.
@@ -43,20 +43,14 @@ export class EditeventComponent implements OnInit {
 
     this.minDate = new Date();
 
-    // Redux to be tested later
-    
     if (id !== null) {
-      console.log(id);
-      
       this.ngRedux.select(state => state.events).subscribe(res => {
         if (res) {
-          this.eventToBeEdited = res.events.find(event => event.id === id) || {} as Event;         
-          console.log(this.eventToBeEdited);
-          
+          this.eventToBeEdited = res.events.find(event => event.id === id) || {} as Event;
         }
       });
     }
-       // attach information to FormGroup
+    // attach information to FormGroup
     this.editEventFormGroup = this.fb.group({
       title: [this.eventToBeEdited.title, Validators.required],
       startDate: [this.eventToBeEdited.startDate, Validators.required],
@@ -68,7 +62,7 @@ export class EditeventComponent implements OnInit {
       location: [this.eventToBeEdited.location],
       schedule: [this.eventToBeEdited.schedule, Validators.required],
 
-    }); 
+    });
   }
 
   editEvent() {
