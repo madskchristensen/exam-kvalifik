@@ -33,9 +33,11 @@ mat-sidenav-content {
 
 #main-content {
   margin: 4% 7% 4% 3%;
+  padding: 2% 1.5% 2% 1.5%;
   background-color: #fff;
-  padding: 2%;
   text-align: justify;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.01), 0 2px 10px rgba(0,0,0,0.05);
 }
 
 mat-list-option[aria-selected="true"] {

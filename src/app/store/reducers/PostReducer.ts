@@ -1,7 +1,6 @@
 import { tassign } from 'tassign';
 import { PostState } from '../Store';
 import { PostActions } from '../actions/PostActions';
-import { Post } from '../../entities/Post';
 
 export const posts = [];
 // export const posts = [
@@ -14,9 +13,9 @@ export const posts = [];
 const INITIAL_STATE: PostState = { posts };
 
 export function postReducer(state: PostState = INITIAL_STATE, action: any) {
-/*  console.log("state", state);*/
 
   switch (action.type) {
+
     case PostActions.ADD_POST:
       return tassign(state, { posts: [...state.posts, action.payload] });
 

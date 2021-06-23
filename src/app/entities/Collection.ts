@@ -1,5 +1,5 @@
 export interface Collection {
-  id: string;
+  id?: string;
   title: string;
   description: string;
   contentIds?: string[] | null;
