@@ -10,7 +10,7 @@
 
   <mat-table [dataSource]="currentEvents">
     <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Event</mat-header-cell>
       <mat-cell *matCellDef="let event">
         {{ event.title ? event.title : 'N/A' }}
       </mat-cell>
@@ -74,7 +74,7 @@
 
     <mat-table [dataSource]="pastEvents">
       <ng-container matColumnDef="title">
-        <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Event</mat-header-cell>
         <mat-cell *matCellDef="let event">
           {{ event.title ? event.title : 'N/A' }}
         </mat-cell>
