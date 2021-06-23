@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "e2e": "cypress open",
+    "cyp": "cypress run --record --key 6616ebec-82c1-4824-b5f8-dc178f25cd0e"
   },
   "private": true,
   "dependencies": {
@@ -34,6 +36,7 @@
     "rxjs": "~6.6.0",
     "tassign": "^1.0.0",
     "tslib": "^2.1.0",
+    "uuidv4": "^6.2.10",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -42,6 +45,7 @@
     "@angular/compiler-cli": "~12.0.0",
     "@types/jasmine": "~3.6.0",
     "@types/lodash": "^4.14.170",
+    "cypress": "^7.5.0",
     "deep-freeze": "0.0.1",
     "jasmine-core": "~3.7.0",
     "karma": "~6.3.0",
