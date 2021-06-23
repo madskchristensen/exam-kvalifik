@@ -9,6 +9,7 @@ describe('CRUD Post', () => {
 
     beforeEach(() => {
         cy.visit('/posts');
+        cy.viewport('macbook-16');
     });
 
     it('can press new post and create valid draft', () => {
@@ -63,7 +64,7 @@ describe('CRUD Post', () => {
         cy.location().should((location) => {
             expect(location.href).to.eq('http://localhost:4200/posts');
         });
-        cy.contains('Post saved succesfully');
+        cy.contains('Post updated succesfully');
         cy.contains('mat-cell', title)
             .parent('mat-row')
             .within(() => {
