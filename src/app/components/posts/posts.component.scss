@@ -2,6 +2,25 @@ table {
   width: 100%;
 }
 
+#posts-title {
+  color: #32305d;
+  font-weight: 800;
+  font-size: 2em;
+}
+
+#new-btn {
+  text-align: left;
+  width: 15%;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+#new-btn div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 #post-header {
   display: flex;
   justify-content: space-between;
@@ -9,3 +28,42 @@ table {
   margin: 1rem;
 }
 
+.status-div {
+  padding: 1px 12px;
+  border-radius: 8px;
+  display: inline-block;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 0.7rem;
+}
+
+.mat-column-title {
+  flex-basis: 40%;
+}
+
+.mat-column-created, .mat-column-type, .mat-column-status, .mat-column-edit {
+  flex-basis: content;
+  justify-content: flex-start;
+}
+
+.mat-row:hover {
+  background-color: #eeeeee;
+}
+
+.mat-row, .mat-header-row {
+  border-bottom: none;
+}
+
+.mat-header-cell {
+  font-size: 1rem;
+  color: #333333;
+  font-weight: bold;
+}
+
+.published {
+  background-color: #88e288;
+}
+
+.draft {
+  background-color: #f9ae7a;
+}

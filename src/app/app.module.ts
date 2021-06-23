@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { PostsComponent } from './components/posts/posts.component';
-import { PostComponent } from './components/post/post.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
@@ -36,24 +35,26 @@ import { DevToolsExtension, NgRedux, NgReduxModule } from "@angular-redux/store"
 import { AppState, rootReducer } from "./store/Store";
 import { NgReduxRouter, NgReduxRouterModule } from "@angular-redux/router";
 import { EditpostComponent } from './components/editpost/editpost.component';
+import {HttpClientModule} from "@angular/common/http";
 import { ToastrModule } from 'ngx-toastr';
 import { NeweventComponent } from './components/newevent/newevent.component';
 import { DatePipe } from '@angular/common';
 import { EditeventComponent } from './components/editevent/editevent.component';
 import { EventsComponent } from './components/events/events.component';
+import { PostsPipe } from './pipes/posts/posts.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostsComponent,
-    PostComponent,
     SidenavComponent,
     HeaderComponent,
     NewpostComponent,
     EditpostComponent,
     NeweventComponent,
     EditeventComponent,
-    EventsComponent
+    EventsComponent,
+    PostsPipe
   ],
   imports: [
     BrowserModule,
@@ -65,6 +66,7 @@ import { EventsComponent } from './components/events/events.component';
     MatMenuModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatSlideToggleModule, MatButtonToggleModule, MatNativeDateModule, MatDatepickerModule,
     ReactiveFormsModule, 
     FormsModule, MatTableModule,
+    HttpClientModule,
     NgReduxModule, NgReduxRouterModule.forRoot(),
     ToastrModule.forRoot(),
     NgxMatTimepickerModule

@@ -1,7 +1,6 @@
 import { tassign } from 'tassign';
 import { PostState } from '../Store';
 import { PostActions } from '../actions/PostActions';
-import { Post } from '../../entities/Post';
 
 export const posts = [];
 // export const posts = [
@@ -11,12 +10,17 @@ export const posts = [];
 //   {id: '4', title: "test4", text: "hmmm", published: true, pinned: true } as Post,
 // ];
 
-const INITIAL_STATE: PostState = { posts: posts };
+const INITIAL_STATE: PostState = { posts };
 
 export function postReducer(state: PostState = INITIAL_STATE, action: any) {
+
   switch (action.type) {
+
     case PostActions.ADD_POST:
       return tassign(state, { posts: [...state.posts, action.payload] });
+
+    case PostActions.READ_POSTS:
+      return tassign(state, { posts: action.payload });
 
     case PostActions.UPDATE_POST:
       const newArray = [...state.posts];
@@ -24,10 +28,8 @@ export function postReducer(state: PostState = INITIAL_STATE, action: any) {
         (post) => post.id === action.payload.id
       );
       newArray[index] = action.payload;
-      return tassign(state, { posts: newArray });
 
-    case PostActions.READ_POSTS:
-      return tassign(state, { posts: action.payload });
+      return tassign(state, { posts: newArray });
 
     case PostActions.DELETE_POST:
       const newArray2 = [...state.posts];

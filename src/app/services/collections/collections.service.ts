@@ -1,49 +1,40 @@
 import { Injectable } from '@angular/core';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-  AngularFirestoreDocument
-} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Collection } from 'src/app/entities/Collection';
 import { IService } from '../IService';
-import { map } from 'rxjs/operators';
+import {environment} from "../../../environments/environment";
+import {HttpClient} from "@angular/common/http";
+import {ServiceUtil} from "../ServiceUtil";
 
 @Injectable({
   providedIn: 'root'
 })
-export class CollectionsService
-{
-  collection!: AngularFirestoreCollection<Collection>;
-  document!: AngularFirestoreDocument<Collection>;
-  list!: Observable<Collection[]>;
-  collectionName!: string;
 
-  constructor(public db: AngularFirestore) {
-    this.collection = db.collection<Collection>(this.collectionName);
-    this.list = this.collection.snapshotChanges().pipe(
-      map((snaps) =>
-        snaps.map((snap) => {
-          const data =
-            snap.payload.doc.data() as Collection;
-          data.id = snap.payload.doc.id;
-          return data;
-        })
-      )
-    );
+export class CollectionsService implements IService<Collection> {
+  private collection: string = "collections.json";
+  private collectionUrl: string = environment.firebase.databaseURL + "/" + this.collection;
+
+  constructor(private http: HttpClient) {
+
   }
-  getAll(): Observable<Collection[]> {
-    return this.list;
+
+  add(t: Collection): Observable<Collection> {
+    return this.http.post(this.collectionUrl, t, ServiceUtil.getHttpOptions()) as Observable<Collection>;
   }
-  add(t: Collection): void {
-    this.collection.add(t);
+
+  delete(t: Collection): Observable<Collection> {
+    const deleteUrl = environment.firebase.databaseURL + "/collections/" + t.id + ".json";
+
+    return this.http.delete(deleteUrl, ServiceUtil.getHttpOptions()) as Observable<Collection>;
   }
-  update(t: Collection): void {
-    this.document = this.db.doc(`${this.collectionName}/${t.id}`);
-    this.document.update(t);
+
+  getAll(): Observable<Collection> {
+    return this.http.get(this.collectionUrl, ServiceUtil.getHttpOptions()) as Observable<Collection>;
   }
-  delete(t: Collection): void {
-    this.document = this.db.doc(`${this.collectionName}/${t.id}`);
-    this.document.delete();
+
+  update(t: Collection): Observable<Collection> {
+    const updateUrl = environment.firebase.databaseURL + "/collections/" + t.id + ".json";
+
+    return this.http.patch(updateUrl, t, ServiceUtil.getHttpOptions()) as Observable<Collection>;
   }
 }
