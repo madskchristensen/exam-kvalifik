@@ -33,7 +33,7 @@
           <!--Only start date for now. Fix after action is ready -->
           <mat-icon>watch_later</mat-icon>
           {{ event.endTime  ? event.endTime : 'N/A' }},
-          {{ event.startDate  ? (event.startDate | date :  "fullDate") : 'N/A' }}
+          {{ event.endDate  ? (event.endDate | date :  "fullDate") : 'N/A' }}
         </mat-cell>
       </ng-container>
 
@@ -97,7 +97,7 @@
             <!--Only start date for now. Fix after action is ready -->
             <mat-icon>watch_later</mat-icon>
             {{ event.endTime  ? event.endTime : 'N/A' }},
-            {{ event.startDate  ? (event.startDate | date :  "fullDate") : 'N/A' }}
+            {{ event.endDate  ? (event.endDate | date :  "fullDate") : 'N/A' }}
           </mat-cell>
         </ng-container>
 
