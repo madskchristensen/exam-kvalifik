@@ -76,7 +76,7 @@ export class EditpostComponent implements OnInit {
           this.editPostFormGroup.value.mediaType = "None";
         }
 
-        // add postFormGroup elements to 
+        // add postFormGroup elements to post to be edited
         this.postToBeEdited.title = this.editPostFormGroup.value.title;
         this.postToBeEdited.text = this.editPostFormGroup.value.text;
         this.postToBeEdited.pinned = this.editPostFormGroup.value.pinned;
@@ -92,7 +92,7 @@ export class EditpostComponent implements OnInit {
 
         // add post to DB
         this.postActions.updatePost(this.postToBeEdited);
-        this.toastr.success('', 'Post saved succesfully!');
+        this.toastr.success('', 'Post updated succesfully!');
 
       }
   

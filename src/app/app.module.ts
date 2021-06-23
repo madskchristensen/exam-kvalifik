@@ -20,6 +20,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 
 import { environment } from '../environments/environment';
 
@@ -34,6 +37,10 @@ import { NgReduxRouter, NgReduxRouterModule } from "@angular-redux/router";
 import { EditpostComponent } from './components/editpost/editpost.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ToastrModule } from 'ngx-toastr';
+import { NeweventComponent } from './components/newevent/newevent.component';
+import { DatePipe } from '@angular/common';
+import { EditeventComponent } from './components/editevent/editevent.component';
+import { EventsComponent } from './components/events/events.component';
 import { PostsPipe } from './pipes/posts/posts.pipe';
 
 @NgModule({
@@ -44,6 +51,9 @@ import { PostsPipe } from './pipes/posts/posts.pipe';
     HeaderComponent,
     NewpostComponent,
     EditpostComponent,
+    NeweventComponent,
+    EditeventComponent,
+    EventsComponent,
     PostsPipe
   ],
   imports: [
@@ -53,14 +63,15 @@ import { PostsPipe } from './pipes/posts/posts.pipe';
     AngularFirestoreModule,
     BrowserAnimationsModule,
     MatListModule, MatIconModule, MatSidenavModule, MatButtonModule, MatToolbarModule,
-    MatMenuModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatSlideToggleModule, MatButtonToggleModule,
-    ReactiveFormsModule,
+    MatMenuModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatSlideToggleModule, MatButtonToggleModule, MatNativeDateModule, MatDatepickerModule,
+    ReactiveFormsModule, 
     FormsModule, MatTableModule,
     HttpClientModule,
     NgReduxModule, NgReduxRouterModule.forRoot(),
     ToastrModule.forRoot(),
+    NgxMatTimepickerModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 

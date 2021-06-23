@@ -33,8 +33,6 @@ export class PostsComponent implements OnInit {
   }
 
   editPost(id: any) {
-    this.postClicked.emit(id);
-
-    this.router.navigate(['edit-post', { myId: id }]);
+    this.router.navigate(['edit-post', {myId: id}])
   }
 }

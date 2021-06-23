@@ -1,11 +1,13 @@
 export interface Event {
   id?: string;
   title: string;
-  start: Date;
-  end: Date;
+  startDate: Date;
+  startTime: string;
+  endDate: Date;
+  endTime: string;
   description: string;
   published: boolean;
   pinned: boolean;
-  schedule?: Map<string, string> | null;
+  schedule?: string | null;
   location?: string | null;
 }
