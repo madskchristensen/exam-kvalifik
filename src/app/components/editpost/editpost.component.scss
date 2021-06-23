@@ -46,10 +46,12 @@
 }
 
 .media-button {
-    width: 175px;
-    height: 60px;
-    margin-left: 1.5em;
- }
+  width: 175px;
+  height: 60px;
+  margin-left: 1.5em;
+  display: flex;
+  align-items: center;
+}
 
 #button-group {
     padding-bottom: 5em;

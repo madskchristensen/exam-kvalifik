@@ -13,6 +13,7 @@ describe('CRUD Post', () => {
 
     it('can press new post and create valid draft', () => {
         //click new post button
+
         cy.get('#new-btn').click();
         //check page contains message
         cy.contains('New Post');
