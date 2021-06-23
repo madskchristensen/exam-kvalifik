@@ -8,8 +8,8 @@
     />
   </mat-form-field>
 </div>
-<div id="post-header">
-  <h1 id="posts-title">Posts</h1>
+<div id="component-header">
+  <h1 id="component-title">Posts</h1>
   <button routerLink="/new-post" id="new-btn" mat-raised-button color="primary">
     <div>
       <span>New post</span>
@@ -42,7 +42,7 @@
   <ng-container matColumnDef="status">
     <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
     <mat-cell *matCellDef="let post">
-      <div class="status-div" [ngClass]="{'published' : post.published === true, 'draft' : post.published === false}">
+      <div class="post-status-div" [ngClass]="{'published' : post.published === true, 'draft' : post.published === false}">
         {{ post.published ? 'PUBLISHED' : 'DRAFT' }}
       </div>
     </mat-cell>

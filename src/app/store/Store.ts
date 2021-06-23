@@ -4,7 +4,7 @@ import { eventReducer } from "./reducers/EventReducer";
 import { collectionReducer } from "./reducers/CollectionReducer";
 import { Post } from "../entities/Post";
 import { Event } from "../entities/Event";
-import {Collection} from "../entities/Collection";
+import { Collection } from "../entities/Collection";
 
 export class PostState {
   posts!: Post[];
