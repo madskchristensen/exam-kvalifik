@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Event } from '../../entities/Event';
 import { FormControl } from '@angular/forms';
-//import { EventActions } from 'src/app/store/actions/EventActions';
+import { EventActions } from 'src/app/store/actions/EventActions';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgRedux } from '@angular-redux/store';
 import { AppState } from 'src/app/store/Store';
@@ -35,7 +35,7 @@ export class EditeventComponent implements OnInit {
   // to be filled from organisations db. Placeholder atm.
   organisationList: string[] = ['CBS Diversity and Inclusion', 'CBS Icelandic Student Association', "CBS Finance Competition"];
 
-  constructor(private fb: FormBuilder,  private router: Router, private toastr: ToastrService, private route: ActivatedRoute,
+  constructor(private fb: FormBuilder,  private router: Router, private toastr: ToastrService, private route: ActivatedRoute, private eventActions: EventActions,
     private ngRedux: NgRedux<AppState>) { }
 
   ngOnInit(): void {
@@ -44,17 +44,18 @@ export class EditeventComponent implements OnInit {
     this.minDate = new Date();
 
     // Redux to be tested later
-    /*
+    
     if (id !== null) {
+      console.log(id);
+      
       this.ngRedux.select(state => state.events).subscribe(res => {
         if (res) {
-          this.eventToBeEdited = res.posts.find(event => event.id === id) || {} as Event;         
+          this.eventToBeEdited = res.events.find(event => event.id === id) || {} as Event;         
+          console.log(this.eventToBeEdited);
+          
         }
       });
     }
-    */  
-    this.eventToBeEdited = {} as Event;
-
        // attach information to FormGroup
     this.editEventFormGroup = this.fb.group({
       title: [this.eventToBeEdited.title, Validators.required],
@@ -75,7 +76,7 @@ export class EditeventComponent implements OnInit {
       // check if delete was pressed
       if (document.activeElement?.getAttribute("name") === "delete-button") {
         // delete event
-        //this.eventActions.deleteEvent(this.eventToBeEdited);
+        this.eventActions.deleteEvent(this.eventToBeEdited);
         this.toastr.success('', 'Event deleted succesfully!');
 
       }
@@ -105,7 +106,7 @@ export class EditeventComponent implements OnInit {
         }
 
         // add event to DB
-        // this.eventActions.updateEvent(this.eventToBeEdited);
+        this.eventActions.updateEvent(this.eventToBeEdited);
         this.toastr.success('', 'Event updated succesfully!');
       }
       // redirect

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Event } from '../../entities/Event';
 import { FormControl } from '@angular/forms';
-//import { PostActions } from 'src/app/store/actions/';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
+import { EventActions } from 'src/app/store/actions/EventActions';
 
 @Component({
   selector: 'app-newevent',
@@ -36,7 +36,7 @@ export class NeweventComponent implements OnInit {
   // to be filled from organisations db. Placeholder atm.
   organisationList: string[] = ['CBS Diversity and Inclusion', 'CBS Icelandic Student Association', "CBS Finance Competition"];
 
-  constructor(private fb: FormBuilder, private router: Router, private toastr: ToastrService, private datePipe: DatePipe) { 
+  constructor(private fb: FormBuilder, private router: Router, private toastr: ToastrService, private datePipe: DatePipe, private eventActions: EventActions) { 
   }
 
   ngOnInit(): void {
@@ -67,7 +67,7 @@ export class NeweventComponent implements OnInit {
       if (!this.newEventFormGroup.value.pinned) {
         this.newEventFormGroup.value.pinned = false;
       }
-      
+
       // attach FormGroup info to empoty post objects
       this.eventToBeCreated = this.newEventFormGroup.value;
 
@@ -88,7 +88,7 @@ export class NeweventComponent implements OnInit {
       }
 
       // add post to DB
-      //this.eventActions.addPost(this.eventToBeCreated);
+      this.eventActions.addEvent(this.eventToBeCreated);
 
       this.toastr.success('', 'Event saved succesfully!');
       this.router.navigate(['events']);

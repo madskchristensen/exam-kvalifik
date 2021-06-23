@@ -2,7 +2,7 @@ import { NgRedux } from '@angular-redux/store';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Event } from '../../entities/Event';
-//import { EventActions } from '../../store/actions/EventActions';
+import { EventActions } from '../../store/actions/EventActions';
 import { AppState, PostState } from '../../store/Store';
 import { EventEmitter, Output } from '@angular/core';
 
@@ -16,16 +16,14 @@ export class EventsComponent implements OnInit {
   eventClicked: EventEmitter<any> = new EventEmitter<any>();
 
   displayedColumns: string[] = ['title', 'startDate', 'endDate', 'location', 'status','edit'];
-  constructor(private router: Router,  private ngRedux: NgRedux<AppState>) {}
+  constructor(private router: Router,  private ngRedux: NgRedux<AppState>, private eventActions: EventActions) {}
 
   ngOnInit(): void {
-    //this.eventActions.readEvents()
-    //this.ngRedux.select(state => state.events).subscribe(res => {res?.events ? this.events = res.events : this.events = []})
+    this.eventActions.readEvents()
+    this.ngRedux.select(state => state.events).subscribe(res => {res?.events ? this.events = res.events : this.events = []})
   }
 
   editEvent(id: any) {
-    this.eventClicked.emit(id);
-
     this.router.navigate(['edit-event', {myId: id}])
   }
 }
