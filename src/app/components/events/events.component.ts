@@ -30,6 +30,7 @@ export class EventsComponent implements OnInit {
       });
       
   }
+  // Called immediately after ngOnChanges() on every change detection run, and immediately after ngOnInit() on the first run.
   ngDoCheck(): void {
     // filter out past events and push them to past events array
     this.filterEvents(this.events)
