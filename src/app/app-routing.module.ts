@@ -6,7 +6,10 @@ import { EditpostComponent } from './components/editpost/editpost.component';
 import { NeweventComponent } from './components/newevent/newevent.component';
 import { EventsComponent } from './components/events/events.component';
 import { EditeventComponent } from './components/editevent/editevent.component';
-
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ChatsComponent } from './components/chats/chats.component';
+import { VolunteersComponent } from './components/volunteers/volunteers.component';
 
 const routes: Routes = [
   { path: 'posts', component: PostsComponent },
@@ -14,7 +17,11 @@ const routes: Routes = [
   { path: 'edit-post', component: EditpostComponent },
   { path: 'events', component: EventsComponent },
   { path: 'new-event', component: NeweventComponent },
-  { path: 'edit-event', component: EditeventComponent }
+  { path: 'edit-event', component: EditeventComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'chats', component: ChatsComponent },
+  { path: 'volunteers', component: VolunteersComponent }
 ];
 
 @NgModule({

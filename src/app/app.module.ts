@@ -46,6 +46,10 @@ import { DatePipe } from '@angular/common';
 import { EditeventComponent } from './components/editevent/editevent.component';
 import { EventsComponent } from './components/events/events.component';
 import { TableFilterPipe } from './pipes/table-filter.pipe';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ChatsComponent } from './components/chats/chats.component';
+import { VolunteersComponent } from './components/volunteers/volunteers.component';
 
 @NgModule({
     declarations: [
@@ -58,7 +62,11 @@ import { TableFilterPipe } from './pipes/table-filter.pipe';
         NeweventComponent,
         EditeventComponent,
         EventsComponent,
-        TableFilterPipe
+        TableFilterPipe,
+        DashboardComponent,
+        ProfileComponent,
+        ChatsComponent,
+        VolunteersComponent
     ],
     imports: [
         BrowserModule,
