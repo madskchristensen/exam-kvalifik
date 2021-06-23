@@ -1,0 +1,89 @@
+<div class="outer-content">
+    <div class="icon-container">
+      <mat-icon matListIcon aria-hidden="false" aria-label="back" id="arrow_back">arrow_back_ios</mat-icon>
+      <span class="icon-text">Back</span>
+    </div>
+  </div>
+  
+  <div id="wrapper-div">
+    <form [formGroup]="editCollectionFormGroup" (ngSubmit)="editCollection()">
+      <div>
+        <h1 class="mat-h1" id="heading">Edit Collection</h1>
+      </div>
+        <!-- Title -->
+        <p>
+          <mat-label class="input-label">Title*</mat-label>
+          <br>
+          <mat-form-field appearance="outline" class="full-width">
+            <input matInput id="titleInput" placeholder="Name your collection" formControlName="title">
+          </mat-form-field>
+          <mat-error *ngIf="editCollectionFormGroup.controls.title.errors?.required && editCollectionFormGroup.controls.title.touched">
+            You must enter a title
+          </mat-error>
+  
+        </p>
+        
+        <!-- Description-->
+        <p>
+            <mat-label class="bigger-input-label">Description*</mat-label>
+            <br>
+            <mat-form-field appearance="outline" class="full-width">
+                <textarea matInput placeholder="Enter a description of the collection" formControlName="description" rows="10"></textarea>
+            </mat-form-field>
+            <mat-error *ngIf="editCollectionFormGroup.controls.description.errors?.required && editCollectionFormGroup.controls.description.touched">
+                You must enter a description
+            </mat-error>
+        </p>
+
+        <!-- Content -->
+        <mat-label class="bigger-input-label">Add Content</mat-label>
+        <br>
+        <p class="sub-text">
+            You can add content to your post. Content can be posts or events. 
+        </p>
+        <!-- TO DO: Round corners, center text -->
+        <div id="button-group">
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="contents" >
+            <mat-button-toggle value="Posts" class="media-button" color="primary">
+                <mat-icon matListIcon aria-hidden="false" aria-label="back">text_snippet</mat-icon>
+                Posts
+            </mat-button-toggle>
+
+            <mat-button-toggle value="Events" class="media-button">
+                <mat-icon matListIcon aria-hidden="false" aria-label="back">event</mat-icon>
+                Events
+            </mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+  
+        <!-- Pinned -->
+        <mat-label class="bigger-input-label">Pinned</mat-label>
+        <br>
+        <p class="sub-text">
+          You can pin one post or event to the top of the page.
+        </p>
+        <div id="slide-toggle">
+          <mat-slide-toggle color="primary" formControlName="pinned"></mat-slide-toggle>
+          <br>
+        </div>
+         <mat-divider></mat-divider>
+  
+         <div id="final-button-group">
+            <button mat-stroked-button id="save-button" name="save-button">
+              Save draft
+              <mat-icon matListIcon aria-hidden="false" aria-label="back" class="icon-right">save</mat-icon>
+            </button>
+
+            <button mat-flat-button id="publish-button" name="publish-button">
+              Publish post
+              <mat-icon matListIcon aria-hidden="false" aria-label="back" class="icon-right">text_snippet</mat-icon>
+            </button>
+            <br><br>
+            <button mat-stroked-button color="warn" id="delete-button" name="delete-button">
+              Delete post
+            </button>
+          </div>
+      </form>
+  </div>
+  
+  

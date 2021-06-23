@@ -43,6 +43,8 @@ import { EditeventComponent } from './components/editevent/editevent.component';
 import { EventsComponent } from './components/events/events.component';
 import { PostsPipe } from './pipes/posts/posts.pipe';
 import { CollectionsComponent } from './components/collections/collections.component';
+import { NewcollectionComponent } from './components/newcollection/newcollection.component';
+import { EditcollectionComponent } from './components/editcollection/editcollection.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { CollectionsComponent } from './components/collections/collections.compo
     EditeventComponent,
     EventsComponent,
     PostsPipe,
-    CollectionsComponent
+    CollectionsComponent,
+    NewcollectionComponent,
+    EditcollectionComponent
   ],
   imports: [
     BrowserModule,

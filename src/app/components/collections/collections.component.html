@@ -1,6 +1,6 @@
 <div id="component-header">
     <h1 id="component-title">Collections</h1>
-    <button routerLink="/new-post" id="new-btn" mat-raised-button color="primary">
+    <button routerLink="/new-collection" id="new-btn" mat-raised-button color="primary">
       <div>
         <span>New collection</span>
         <mat-icon>add_circle</mat-icon>
@@ -20,7 +20,7 @@
     </mat-form-field>
   </div>
   
-  <mat-table [dataSource]="collections | tableFilter: search">
+  <mat-table [dataSource]="collections"> <!-- TO DO: ADD | tableFilter: search-->
       <ng-container matColumnDef="title">
           <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
           <mat-cell *matCellDef="let collection">

@@ -36,5 +36,4 @@ export class CollectionsComponent implements OnInit {
   editCollection(id: any) {
     this.router.navigate(['edit-collection', {myId: id}])
   }
-
 }
