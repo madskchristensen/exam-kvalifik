@@ -1,14 +1,3 @@
-<div id="post-filter">
-    <mat-form-field>
-        <input
-            id="cy_test"
-            matInput
-            type="text"
-            [(ngModel)]="search"
-            placeholder="Search a post"
-        />
-    </mat-form-field>
-</div>
 <div id="component-header">
   <h1 id="component-title">Posts</h1>
   <button routerLink="/new-post" id="new-btn" mat-raised-button color="primary">
@@ -17,6 +6,18 @@
       <mat-icon>add_circle</mat-icon>
     </div>
   </button>
+</div>
+
+<div id="post-filter">
+  <mat-form-field>
+    <input
+      id="cy_test"
+      matInput
+      type="text"
+      [(ngModel)]="search"
+      placeholder="Search a post"
+    />
+  </mat-form-field>
 </div>
 
 <mat-table [dataSource]="posts | filterPosts: search">

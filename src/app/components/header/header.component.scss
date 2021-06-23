@@ -7,7 +7,9 @@ mat-toolbar {
   z-index: 5;
   border-bottom: #ececee 2px solid;
   padding: 0;
+  min-height: 8%;
   font-size: 1rem;
+  color: #32305d;
 }
 
 .spacer2 {
@@ -27,7 +29,7 @@ mat-toolbar {
 
 #header-user-button {
   padding-left: 0;
-  margin-right: 6%;
+  margin-right: 6.5%;
 }
 
 #header-user-logo {
