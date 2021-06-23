@@ -11,16 +11,28 @@ export function collectionReducer(state: CollectionState = INITIAL_STATE, action
   switch (action.type) {
 
     case CollectionActions.ADD_COLLECTION:
-      return tassign(state, {});
+      return tassign(state, { collections: [...state.collections, action.payload] });
 
     case CollectionActions.READ_COLLECTIONS:
-      return tassign(state, {});
+      return tassign(state, { collections: action.payload });
 
     case CollectionActions.UPDATE_COLLECTION:
-      return tassign(state, {});
+      const newArray = [...state.collections];
+      const index = state.collections.findIndex(
+        (collection) => collection.id === action.payload.id
+      );
+      newArray[index] = action.payload;
+
+      return tassign(state, { collections: newArray });
 
     case CollectionActions.DELETE_COLLECTION:
-      return tassign(state, {});
+      const newArray2 = [...state.collections];
+      const index2 = state.collections.findIndex(
+        (collection) => collection.id === action.payload.id
+      );
+      newArray2.splice(index2, 1);
+
+      return tassign(state, { collections: newArray2 });
 
     default:
       return state;
