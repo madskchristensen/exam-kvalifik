@@ -13,6 +13,9 @@ import { EventEmitter, Output } from '@angular/core';
 })
 export class EventsComponent implements OnInit {
   events!: Event[];
+  currentEvents!: Event[];
+  pastEvents!: Event[];
+  currentDate!: Date;
   eventClicked: EventEmitter<any> = new EventEmitter<any>();
   displayedColumns: string[] = ['title', 'startDate', 'endDate', 'location', 'status','edit'];
 
@@ -25,6 +28,18 @@ export class EventsComponent implements OnInit {
       .subscribe((res) => {
         res?.events ? (this.events = res.events) : (this.events = []);
       });
+      
+  }
+  ngDoCheck(): void {
+    // filter out past events and push them to past events array
+    this.filterEvents(this.events)
+  }
+
+  filterEvents(events: Event[]) {
+    this.currentDate = new Date();
+    
+    this.currentEvents = events.filter(event => new Date(event.endDate).getTime() >= this.currentDate.getTime() );   
+    this.pastEvents = events.filter(event => new Date(event.endDate).getTime() < this.currentDate.getTime() );   
   }
 
   editEvent(id: any) {
