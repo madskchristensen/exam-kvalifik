@@ -1,4 +1,6 @@
 {
-  "projectId": "ri711b",
-  "baseUrl": "http://localhost:4200"
+    "projectId": "ri711b",
+    "baseUrl": "http://localhost:4200",
+    "viewportWidth": 1536,
+    "viewportHeight": 960
 }

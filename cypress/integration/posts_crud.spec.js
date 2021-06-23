@@ -9,7 +9,6 @@ describe('CRUD Post', () => {
 
     beforeEach(() => {
         cy.visit('/posts');
-        cy.viewport('macbook-16');
     });
 
     it('can press new post and create valid draft', () => {
