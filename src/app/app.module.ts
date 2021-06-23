@@ -42,6 +42,7 @@ import { DatePipe } from '@angular/common';
 import { EditeventComponent } from './components/editevent/editevent.component';
 import { EventsComponent } from './components/events/events.component';
 import { PostsPipe } from './pipes/posts/posts.pipe';
+import { CollectionsComponent } from './components/collections/collections.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { PostsPipe } from './pipes/posts/posts.pipe';
     NeweventComponent,
     EditeventComponent,
     EventsComponent,
-    PostsPipe
+    PostsPipe,
+    CollectionsComponent
   ],
   imports: [
     BrowserModule,
