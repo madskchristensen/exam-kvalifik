@@ -8,9 +8,8 @@ body {
   margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-table {
+mat-table {
   width: 100%;
-  padding: 0;
 }
 
 #component-title {
@@ -49,10 +48,28 @@ table {
 
 .mat-row, .mat-header-row {
   border-bottom: none;
+  flex: 1;
 }
 
 .mat-header-cell {
   font-size: 1rem;
   color: #333333;
   font-weight: bold;
+}
+
+.status-div {
+  padding: 1px 12px;
+  border-radius: 8px;
+  display: inline-block;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 0.7rem;
+}
+
+.published {
+  background-color: #88e288;
+}
+
+.draft {
+  background-color: #f9ae7a;
 }

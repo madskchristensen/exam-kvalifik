@@ -22,7 +22,8 @@ export class PostsComponent implements OnInit {
     private router: Router,
     private postActions: PostActions,
     private ngRedux: NgRedux<AppState>
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.ngRedux
