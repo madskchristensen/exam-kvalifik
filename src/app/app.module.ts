@@ -31,57 +31,76 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HeaderComponent } from './components/header/header.component';
 import { NewpostComponent } from './components/newpost/newpost.component';
-import { DevToolsExtension, NgRedux, NgReduxModule } from "@angular-redux/store";
-import { AppState, rootReducer } from "./store/Store";
-import { NgReduxRouter, NgReduxRouterModule } from "@angular-redux/router";
+import {
+    DevToolsExtension,
+    NgRedux,
+    NgReduxModule
+} from '@angular-redux/store';
+import { AppState, rootReducer } from './store/Store';
+import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { EditpostComponent } from './components/editpost/editpost.component';
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { NeweventComponent } from './components/newevent/newevent.component';
 import { DatePipe } from '@angular/common';
 import { EditeventComponent } from './components/editevent/editevent.component';
 import { EventsComponent } from './components/events/events.component';
-import { PostsPipe } from './pipes/posts/posts.pipe';
+import { TableFilterPipe } from './pipes/table-filter.pipe';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PostsComponent,
-    SidenavComponent,
-    HeaderComponent,
-    NewpostComponent,
-    EditpostComponent,
-    NeweventComponent,
-    EditeventComponent,
-    EventsComponent,
-    PostsPipe
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    BrowserAnimationsModule,
-    MatListModule, MatIconModule, MatSidenavModule, MatButtonModule, MatToolbarModule,
-    MatMenuModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatSlideToggleModule, MatButtonToggleModule, MatNativeDateModule, MatDatepickerModule,
-    ReactiveFormsModule, 
-    FormsModule, MatTableModule,
-    HttpClientModule,
-    NgReduxModule, NgReduxRouterModule.forRoot(),
-    ToastrModule.forRoot(),
-    NgxMatTimepickerModule
-  ],
-  providers: [DatePipe],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        PostsComponent,
+        SidenavComponent,
+        HeaderComponent,
+        NewpostComponent,
+        EditpostComponent,
+        NeweventComponent,
+        EditeventComponent,
+        EventsComponent,
+        TableFilterPipe
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+        BrowserAnimationsModule,
+        MatListModule,
+        MatIconModule,
+        MatSidenavModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatMenuModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatSlideToggleModule,
+        MatButtonToggleModule,
+        MatNativeDateModule,
+        MatDatepickerModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatTableModule,
+        HttpClientModule,
+        NgReduxModule,
+        NgReduxRouterModule.forRoot(),
+        ToastrModule.forRoot(),
+        NgxMatTimepickerModule
+    ],
+    providers: [DatePipe],
+    bootstrap: [AppComponent]
 })
-
 export class AppModule {
-  constructor(private ngRedux: NgRedux<AppState>, private devTool: DevToolsExtension) {
-
-    this.ngRedux.configureStore(
-      rootReducer,
-      {},
-      [],
-      [ devTool.isEnabled() ? devTool.enhancer() : f => f]);
-  }
+    constructor(
+        private ngRedux: NgRedux<AppState>,
+        private devTool: DevToolsExtension
+    ) {
+        this.ngRedux.configureStore(
+            rootReducer,
+            {},
+            [],
+            [devTool.isEnabled() ? devTool.enhancer() : (f) => f]
+        );
+    }
 }
