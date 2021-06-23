@@ -7,3 +7,51 @@ html, body {
 body {
   margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+table {
+  width: 100%;
+}
+
+#new-btn {
+  text-align: left;
+  width: 15%;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+#new-btn div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#component-title {
+  color: #32305d;
+  font-weight: 800;
+  font-size: 2em;
+}
+
+#component-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+
+.mat-column-title {
+  flex-basis: 40%;
+}
+
+.mat-row:hover {
+  background-color: #eeeeee;
+}
+
+.mat-row, .mat-header-row {
+  border-bottom: none;
+}
+
+.mat-header-cell {
+  font-size: 1rem;
+  color: #333333;
+  font-weight: bold;
+}
