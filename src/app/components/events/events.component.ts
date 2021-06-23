@@ -30,7 +30,7 @@ export class EventsComponent implements OnInit {
       });
       
   }
-  ngAfterContentChecked(): void {
+  ngDoCheck(): void {
     // filter out past events and push them to past events array
     this.filterEvents(this.events)
   }
