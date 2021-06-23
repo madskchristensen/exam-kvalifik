@@ -46,6 +46,9 @@ import { DatePipe } from '@angular/common';
 import { EditeventComponent } from './components/editevent/editevent.component';
 import { EventsComponent } from './components/events/events.component';
 import { TableFilterPipe } from './pipes/table-filter.pipe';
+import { NewcollectionComponent } from './components/newcollection/newcollection.component';
+import { CollectionsComponent } from './components/collections/collections.component';
+import { EditcollectionComponent } from './components/editcollection/editcollection.component';
 
 @NgModule({
     declarations: [
@@ -58,7 +61,10 @@ import { TableFilterPipe } from './pipes/table-filter.pipe';
         NeweventComponent,
         EditeventComponent,
         EventsComponent,
-        TableFilterPipe
+        TableFilterPipe,
+        CollectionsComponent,
+        NewcollectionComponent,
+        EditcollectionComponent
     ],
     imports: [
         BrowserModule,
@@ -74,6 +80,7 @@ import { TableFilterPipe } from './pipes/table-filter.pipe';
         MatMenuModule,
         MatFormFieldModule,
         MatInputModule,
+        MatButtonModule,
         MatSelectModule,
         MatSlideToggleModule,
         MatButtonToggleModule,

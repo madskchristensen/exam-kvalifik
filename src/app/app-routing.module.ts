@@ -6,6 +6,9 @@ import { EditpostComponent } from './components/editpost/editpost.component';
 import { NeweventComponent } from './components/newevent/newevent.component';
 import { EventsComponent } from './components/events/events.component';
 import { EditeventComponent } from './components/editevent/editevent.component';
+import { CollectionsComponent } from './components/collections/collections.component';
+import { NewcollectionComponent } from './components/newcollection/newcollection.component';
+import { EditcollectionComponent } from './components/editcollection/editcollection.component';
 
 
 const routes: Routes = [
@@ -14,7 +17,11 @@ const routes: Routes = [
   { path: 'edit-post', component: EditpostComponent },
   { path: 'events', component: EventsComponent },
   { path: 'new-event', component: NeweventComponent },
-  { path: 'edit-event', component: EditeventComponent }
+  { path: 'edit-event', component: EditeventComponent },
+  { path: 'collections', component: CollectionsComponent },
+  { path: 'new-collection', component: NewcollectionComponent },
+  { path: 'edit-collection', component: EditcollectionComponent }
+
 ];
 
 @NgModule({

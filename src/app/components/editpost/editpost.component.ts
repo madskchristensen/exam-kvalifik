@@ -7,6 +7,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgRedux } from '@angular-redux/store';
 import { AppState } from 'src/app/store/Store';
 import { ToastrService } from 'ngx-toastr';
+import {Collection} from "../../entities/Collection";
+import {CollectionActions} from "../../store/actions/CollectionActions";
+import {collections} from "../../store/reducers/CollectionReducer";
 
 @Component({
   selector: 'app-editpost',
@@ -21,37 +24,46 @@ export class EditpostComponent implements OnInit {
   collections = new FormControl();
 
   // to be filled from collection db. Placeholder atm.
-  collectionList: string[] = ['Semester start 2020', 'CBS Volunteers video series', 'Pride month 2020'];
+  collectionList: Collection[] = [];
 
   // groups
   groups = new FormControl();
   // to be filled from group/volunteer db. Placeholder atm.
   groupList: string[] = ['Board of directors', 'Events and social', 'Volunteer nr. 1'];
-  
+
   // organisations
   organisations = new FormControl();
   // to be filled from organisations db. Placeholder atm.
   organisationList: string[] = ['CBS Diversity and Inclusion', 'CBS Icelandic Student Association', "CBS Finance Competition"];
 
   constructor(private fb: FormBuilder, private postActions: PostActions, private router: Router, private toastr: ToastrService, private route: ActivatedRoute,
-    private ngRedux: NgRedux<AppState>) { }
+    private ngRedux: NgRedux<AppState>, private collectionActions: CollectionActions) { }
 
-  ngOnInit(): void {   
+  ngOnInit(): void {
     const id: string = this.route.snapshot.paramMap.get('myId') || "";
 
     if (id !== null) {
       this.ngRedux.select(state => state.posts).subscribe(res => {
         if (res) {
-          this.postToBeEdited = res.posts.find(post => post.id === id) || {} as Post;         
+          this.postToBeEdited = res.posts.find(post => post.id === id) || {} as Post;
         }
       });
-    }    
+    }
+
+    // make sure redux has newest collections
+    this.collectionActions.readCollections();
+
+    // load all collections into collectionList so they can be selected in form
+    this.ngRedux.select(state => state.collections).subscribe(res => {
+
+      this.collectionList = res!.collections;
+    });
 
     this.editPostFormGroup = this.fb.group({
       title: [this.postToBeEdited.title, Validators.required],
       text: [this.postToBeEdited.text, Validators.required],
       pinned: [this.postToBeEdited.pinned],
-      mediaType: [this.postToBeEdited.mediaType]
+      mediaType: [this.postToBeEdited.mediaType],
     });
   }
 
@@ -69,11 +81,6 @@ export class EditpostComponent implements OnInit {
         // set pinned to false if null
         if (!this.editPostFormGroup.value.pinned) {
           this.editPostFormGroup.value.pinned = false;
-        }
-
-        // set mediatype to "None" if null
-        if (!this.editPostFormGroup.value.mediaType) {
-          this.editPostFormGroup.value.mediaType = "None";
         }
 
         // add postFormGroup elements to post to be edited
@@ -95,7 +102,7 @@ export class EditpostComponent implements OnInit {
         this.toastr.success('', 'Post updated succesfully!');
 
       }
-  
+
       // redirect
       this.router.navigate(['posts']);
     }
