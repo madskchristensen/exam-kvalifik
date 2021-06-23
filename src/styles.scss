@@ -10,19 +10,7 @@ body {
 
 table {
   width: 100%;
-}
-
-#new-btn {
-  text-align: left;
-  width: 15%;
-  font-size: 1rem;
-  letter-spacing: 1px;
-}
-
-#new-btn div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 0;
 }
 
 #component-title {
@@ -36,6 +24,19 @@ table {
   justify-content: space-between;
   align-items: center;
   margin: 1rem;
+}
+
+#new-btn {
+  text-align: left;
+  width: 15%;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+#new-btn div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .mat-column-title {
