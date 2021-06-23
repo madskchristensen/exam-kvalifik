@@ -53,7 +53,7 @@ export class PostActions {
       this.ngRedux.dispatch({
         type: PostActions.UPDATE_POST,
         payload: updatedPost
-      })
+      });
     });
   }
 
@@ -63,7 +63,7 @@ export class PostActions {
       this.ngRedux.dispatch({
         type: PostActions.DELETE_POST,
         payload: postToDelete
-      })
+      });
     });
   }
 }
