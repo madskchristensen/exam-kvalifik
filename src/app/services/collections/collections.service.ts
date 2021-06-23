@@ -11,8 +11,8 @@ import {ServiceUtil} from "../ServiceUtil";
 })
 
 export class CollectionsService implements IService<Collection> {
-  collection: string = "collections.json";
-  collectionUrl: string = environment.firebase.databaseURL + "/" + this.collection;
+  private collection: string = "collections.json";
+  private collectionUrl: string = environment.firebase.databaseURL + "/" + this.collection;
 
   constructor(private http: HttpClient) {
 

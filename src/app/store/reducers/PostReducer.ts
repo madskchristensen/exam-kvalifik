@@ -19,6 +19,9 @@ export function postReducer(state: PostState = INITIAL_STATE, action: any) {
     case PostActions.ADD_POST:
       return tassign(state, { posts: [...state.posts, action.payload] });
 
+    case PostActions.READ_POSTS:
+      return tassign(state, { posts: action.payload });
+
     case PostActions.UPDATE_POST:
       const newArray = [...state.posts];
       const index = state.posts.findIndex(
@@ -27,9 +30,6 @@ export function postReducer(state: PostState = INITIAL_STATE, action: any) {
       newArray[index] = action.payload;
 
       return tassign(state, { posts: newArray });
-
-    case PostActions.READ_POSTS:
-      return tassign(state, { posts: action.payload });
 
     case PostActions.DELETE_POST:
       const newArray2 = [...state.posts];
