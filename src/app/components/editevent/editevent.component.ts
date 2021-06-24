@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgRedux } from '@angular-redux/store';
 import { AppState } from 'src/app/store/Store';
 import { ToastrService } from 'ngx-toastr';
+import {Collection} from "../../entities/Collection";
+import {CollectionActions} from "../../store/actions/CollectionActions";
 
 @Component({
   selector: 'app-editevent',
@@ -23,40 +25,44 @@ export class EditeventComponent implements OnInit {
   collections = new FormControl();
 
   // to be filled from collection db. Placeholder atm.
-  collectionList: string[] = ['Semester start 2020', 'CBS Volunteers video series', 'Pride month 2020'];
+  collectionList: Collection[] = [];
 
   // groups
   groups = new FormControl();
   // to be filled from group/volunteer db. Placeholder atm.
   groupList: string[] = ['Board of directors', 'Events and social', 'Volunteer nr. 1'];
-  
+
   // organisations
   organisations = new FormControl();
   // to be filled from organisations db. Placeholder atm.
   organisationList: string[] = ['CBS Diversity and Inclusion', 'CBS Icelandic Student Association', "CBS Finance Competition"];
 
   constructor(private fb: FormBuilder,  private router: Router, private toastr: ToastrService, private route: ActivatedRoute, private eventActions: EventActions,
-    private ngRedux: NgRedux<AppState>) { }
+    private collectionActions: CollectionActions, private ngRedux: NgRedux<AppState>) { }
 
   ngOnInit(): void {
     const id: string = this.route.snapshot.paramMap.get('myId') || "";
 
     this.minDate = new Date();
 
-    // Redux to be tested later
-    
     if (id !== null) {
-      console.log(id);
-      
       this.ngRedux.select(state => state.events).subscribe(res => {
         if (res) {
-          this.eventToBeEdited = res.events.find(event => event.id === id) || {} as Event;         
-          console.log(this.eventToBeEdited);
-          
+          this.eventToBeEdited = res.events.find(event => event.id === id) || {} as Event;
         }
       });
     }
-       // attach information to FormGroup
+
+    // make sure redux has newest collections
+    this.collectionActions.readCollections();
+
+    // load all collections into collectionList so they can be selected in form
+    this.ngRedux.select(state => state.collections).subscribe(res => {
+
+      this.collectionList = res!.collections;
+    });
+
+    // attach information to FormGroup
     this.editEventFormGroup = this.fb.group({
       title: [this.eventToBeEdited.title, Validators.required],
       startDate: [this.eventToBeEdited.startDate, Validators.required],
@@ -68,7 +74,7 @@ export class EditeventComponent implements OnInit {
       location: [this.eventToBeEdited.location],
       schedule: [this.eventToBeEdited.schedule, Validators.required],
 
-    }); 
+    });
   }
 
   editEvent() {

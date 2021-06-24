@@ -1,8 +1,10 @@
 export interface Collection {
   id?: string;
   title: string;
+  createdAt: string;
   description: string;
-  contentIds?: string[] | null;
+  posts?: string[] | null;
+  events?: string[];
   published: boolean;
   pinned: boolean;
 }

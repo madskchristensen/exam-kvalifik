@@ -12,6 +12,8 @@ import { EventEmitter, Output } from '@angular/core';
   styleUrls: ['./events.component.scss']
 })
 export class EventsComponent implements OnInit {
+  searchPlanned = '';
+  searchPast = '';
   events!: Event[];
   currentEvents!: Event[];
   pastEvents!: Event[];

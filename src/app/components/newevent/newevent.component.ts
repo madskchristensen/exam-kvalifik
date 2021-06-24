@@ -6,6 +6,10 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { EventActions } from 'src/app/store/actions/EventActions';
+import {CollectionActions} from "../../store/actions/CollectionActions";
+import {AppState} from "../../store/Store";
+import {NgRedux} from "@angular-redux/store";
+import {Collection} from "../../entities/Collection";
 
 @Component({
   selector: 'app-newevent',
@@ -16,27 +20,28 @@ export class NeweventComponent implements OnInit {
 
   public newEventFormGroup!: FormGroup;
   public eventToBeCreated!: Event;
-  
+
   public minDate!: Date;
 
   // collections
   collections = new FormControl();
 
   // to be filled from collection db. Placeholder atm.
-  collectionList: string[] = ['Semester start 2020', 'CBS Volunteers video series', 'Pride month 2020'];
+  collectionList: Collection[] = [];
 
   // groups
   groups = new FormControl();
   // to be filled from group/volunteer db. Placeholder atm.
   groupList: string[] = ['Board of directors', 'Events and social', 'Volunteer nr. 1'];
-  
+
   // organisations
   organisations = new FormControl();
 
   // to be filled from organisations db. Placeholder atm.
   organisationList: string[] = ['CBS Diversity and Inclusion', 'CBS Icelandic Student Association', "CBS Finance Competition"];
 
-  constructor(private fb: FormBuilder, private router: Router, private toastr: ToastrService, private datePipe: DatePipe, private eventActions: EventActions) { 
+  constructor(private fb: FormBuilder, private router: Router, private toastr: ToastrService, private eventActions: EventActions,
+  private collectionActions: CollectionActions, private ngRedux: NgRedux<AppState>) {
   }
 
   ngOnInit(): void {
@@ -45,6 +50,15 @@ export class NeweventComponent implements OnInit {
 
     // create empty post objects
     this.eventToBeCreated = {} as Event;
+
+    // make sure redux has newest collections
+    this.collectionActions.readCollections();
+
+    // load all collections into collectionList so they can be selected in form
+    this.ngRedux.select(state => state.collections).subscribe(res => {
+
+      this.collectionList = res!.collections;
+    });
 
     // attach information to FormGroup
     this.newEventFormGroup = this.fb.group({
@@ -57,13 +71,12 @@ export class NeweventComponent implements OnInit {
       pinned: "",
       location: "",
       schedule: ["", Validators.required],
-
     });
   }
 
   submitNewEvent() {
     if (this.newEventFormGroup.valid) {
-      // set pinned to false if null 
+      // set pinned to false if null
       if (!this.newEventFormGroup.value.pinned) {
         this.newEventFormGroup.value.pinned = false;
       }
@@ -73,12 +86,9 @@ export class NeweventComponent implements OnInit {
 
       // transform date objects to only conntain dates
       // TO DO: maybe not neccesary. Where do we handle this?
-      const transformedStartDate = this.datePipe.transform(this.newEventFormGroup.value.start, 'M/d/yy');
-      const transformedEndDate = this.datePipe.transform(this.newEventFormGroup.value.end, 'M/d/yy');
+/*      const transformedStartDate = this.datePipe.transform(this.newEventFormGroup.value.start, 'M/d/yy');
+      const transformedEndDate = this.datePipe.transform(this.newEventFormGroup.value.end, 'M/d/yy');*/
 
-      // TO DO
-      // Add date time to newEvent object
-      
       // check if save or publish was pressed. As button is pressed the given button will always be the active element
       if (document.activeElement?.getAttribute("name") === "save-button") {
         this.eventToBeCreated.published = false;

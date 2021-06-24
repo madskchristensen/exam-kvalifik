@@ -10,6 +10,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ChatsComponent } from './components/chats/chats.component';
 import { VolunteersComponent } from './components/volunteers/volunteers.component';
+import { CollectionsComponent } from './components/collections/collections.component';
+import { NewcollectionComponent } from './components/newcollection/newcollection.component';
+import { EditcollectionComponent } from './components/editcollection/editcollection.component';
+
 
 const routes: Routes = [
   { path: 'posts', component: PostsComponent },
@@ -21,7 +25,11 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'chats', component: ChatsComponent },
-  { path: 'volunteers', component: VolunteersComponent }
+  { path: 'volunteers', component: VolunteersComponent },
+  { path: 'collections', component: CollectionsComponent },
+  { path: 'new-collection', component: NewcollectionComponent },
+  { path: 'edit-collection', component: EditcollectionComponent }
+
 ];
 
 @NgModule({

@@ -1,3 +1,5 @@
+
+
 <div id="component-header">
   <h1 id="component-title">Planned Events</h1>
   <button routerLink="/new-event" id="new-btn" mat-raised-button color="primary">
@@ -8,7 +10,19 @@
   </button>
 </div>
 
-  <mat-table [dataSource]="currentEvents">
+<div class="event-filter">
+  <mat-form-field>
+    <input
+      id="cy_test"
+      matInput
+      type="text"
+      [(ngModel)]="searchPlanned"
+      placeholder="Search a current event"
+    />
+  </mat-form-field>
+</div>
+
+<mat-table [dataSource]="currentEvents | tableFilter: searchPlanned">
     <ng-container matColumnDef="title">
       <mat-header-cell *matHeaderCellDef>Event</mat-header-cell>
       <mat-cell *matCellDef="let event">
@@ -33,7 +47,7 @@
           <!--Only start date for now. Fix after action is ready -->
           <mat-icon>watch_later</mat-icon>
           {{ event.endTime  ? event.endTime : 'N/A' }},
-          {{ event.startDate  ? (event.startDate | date :  "fullDate") : 'N/A' }}
+          {{ event.endDate  ? (event.endDate | date :  "fullDate") : 'N/A' }}
         </mat-cell>
       </ng-container>
 
@@ -69,11 +83,22 @@
   </mat-table>
 
   <div id="component-header">
-    <h1 id="component-title">Past events</h1>
+    <h1 id="component-title">Past Events</h1>
   </div>
 
-    <mat-table [dataSource]="pastEvents">
-      <ng-container matColumnDef="title">
+  <div class="event-filter">
+    <mat-form-field>
+      <input
+        id="cy_test"
+        matInput
+        type="text"
+        [(ngModel)]="searchPast"
+        placeholder="Search a past event"
+      />
+    </mat-form-field>
+  </div>
+  
+  <mat-table [dataSource]="pastEvents | tableFilter: searchPast">      <ng-container matColumnDef="title">
         <mat-header-cell *matHeaderCellDef>Event</mat-header-cell>
         <mat-cell *matCellDef="let event">
           {{ event.title ? event.title : 'N/A' }}
@@ -97,7 +122,7 @@
             <!--Only start date for now. Fix after action is ready -->
             <mat-icon>watch_later</mat-icon>
             {{ event.endTime  ? event.endTime : 'N/A' }},
-            {{ event.startDate  ? (event.startDate | date :  "fullDate") : 'N/A' }}
+            {{ event.endDate  ? (event.endDate | date :  "fullDate") : 'N/A' }}
           </mat-cell>
         </ng-container>
 

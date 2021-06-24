@@ -5,6 +5,10 @@ import { FormControl } from '@angular/forms';
 import { PostActions } from 'src/app/store/actions/PostActions';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Collection } from 'src/app/entities/Collection';
+import { NgRedux } from '@angular-redux/store';
+import { AppState } from 'src/app/store/Store';
+import { CollectionActions } from 'src/app/store/actions/CollectionActions';
 
 @Component({
   selector: 'app-newpost',
@@ -15,28 +19,37 @@ import { ToastrService } from 'ngx-toastr';
 export class NewpostComponent implements OnInit {
   public newPostFormGroup!: FormGroup;
   public postToBeCreated!: Post;
-  
+
   // collections
   collections = new FormControl();
 
   // to be filled from collection db. Placeholder atm.
-  collectionList: string[] = ['Semester start 2020', 'CBS Volunteers video series', 'Pride month 2020'];
+  collectionList: Collection[] = [];
 
   // groups
   groups = new FormControl();
   // to be filled from group/volunteer db. Placeholder atm.
   groupList: string[] = ['Board of directors', 'Events and social', 'Volunteer nr. 1'];
-  
+
   // organisations
   organisations = new FormControl();
 
   // to be filled from organisations db. Placeholder atm.
   organisationList: string[] = ['CBS Diversity and Inclusion', 'CBS Icelandic Student Association', "CBS Finance Competition"];
 
-  constructor(private fb: FormBuilder, private postActions: PostActions, private router: Router, private toastr: ToastrService) { 
+  constructor(private fb: FormBuilder, private postActions: PostActions, private router: Router, private toastr: ToastrService,
+    private ngRedux: NgRedux<AppState>,  private collectionActions: CollectionActions) {
   }
 
-  ngOnInit(): void {     
+  ngOnInit(): void {
+    // make sure redux has newest collections
+    this.collectionActions.readCollections();
+
+    // load all collections into collectionList so they can be selected in form
+    this.ngRedux.select(state => state.collections).subscribe(res => {
+
+      this.collectionList = res!.collections;
+    });
     // create empty post objects
     this.postToBeCreated = {} as Post;
 
@@ -48,25 +61,20 @@ export class NewpostComponent implements OnInit {
       mediaType: ""
     });
   }
-  
+
 
   submitNewPost() {
     //console.log(this.newPostFormGroup);
     if (this.newPostFormGroup.valid) {
 
-      // set pinned to false if null 
+      // set pinned to false if null
       if (!this.newPostFormGroup.value.pinned) {
         this.newPostFormGroup.value.pinned = false;
       }
 
-      // set mediatype to "None" if null
-      if (!this.newPostFormGroup.value.mediaType) {
-        this.newPostFormGroup.value.mediaType = "None";
-      }
-
       // attach FormGroup info to empoty post objects
       this.postToBeCreated = this.newPostFormGroup.value;
-      
+
       // create date
       const todaysDate = new Date();
 

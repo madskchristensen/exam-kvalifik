@@ -53,6 +53,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ChatsComponent } from './components/chats/chats.component';
 import { VolunteersComponent } from './components/volunteers/volunteers.component';
+import { NewcollectionComponent } from './components/newcollection/newcollection.component';
+import { CollectionsComponent } from './components/collections/collections.component';
+import { EditcollectionComponent } from './components/editcollection/editcollection.component';
 
 @NgModule({
     declarations: [
@@ -69,7 +72,10 @@ import { VolunteersComponent } from './components/volunteers/volunteers.componen
         DashboardComponent,
         ProfileComponent,
         ChatsComponent,
-        VolunteersComponent
+        VolunteersComponent,
+        CollectionsComponent,
+        NewcollectionComponent,
+        EditcollectionComponent
     ],
     imports: [
         BrowserModule,
@@ -85,6 +91,7 @@ import { VolunteersComponent } from './components/volunteers/volunteers.componen
         MatMenuModule,
         MatFormFieldModule,
         MatInputModule,
+        MatButtonModule,
         MatSelectModule,
         MatSlideToggleModule,
         MatButtonToggleModule,
