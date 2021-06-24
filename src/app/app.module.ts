@@ -23,6 +23,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
 
 import { environment } from '../environments/environment';
 
@@ -87,6 +89,8 @@ import { VolunteersComponent } from './components/volunteers/volunteers.componen
         MatButtonToggleModule,
         MatNativeDateModule,
         MatDatepickerModule,
+        MatProgressSpinnerModule,
+        MatCardModule,
         ReactiveFormsModule,
         FormsModule,
         MatTableModule,
