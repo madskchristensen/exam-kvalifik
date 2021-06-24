@@ -40,7 +40,7 @@ export class NeweventComponent implements OnInit {
   // to be filled from organisations db. Placeholder atm.
   organisationList: string[] = ['CBS Diversity and Inclusion', 'CBS Icelandic Student Association', "CBS Finance Competition"];
 
-  constructor(private fb: FormBuilder, private router: Router, private toastr: ToastrService, private datePipe: DatePipe, private eventActions: EventActions,
+  constructor(private fb: FormBuilder, private router: Router, private toastr: ToastrService, private eventActions: EventActions,
   private collectionActions: CollectionActions, private ngRedux: NgRedux<AppState>) {
   }
 

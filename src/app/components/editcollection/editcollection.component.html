@@ -39,19 +39,24 @@
         <mat-label class="bigger-input-label">Add Content</mat-label>
         <br>
         <p class="sub-text">
-            You can add content to your post. Content can be posts or events.
+            You can add content to your collection. Content can be posts or events.
         </p>
-        <!-- TO DO: Round corners, center text -->
-        <div id="button-group">
-            <button mat-raised-button type="button" value="Posts" class="media-button" color="primary">
-                <mat-icon matListIcon aria-hidden="false" aria-label="back">text_snippet</mat-icon>
-                Posts
-            </button>
+        <div>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Select Posts</mat-label>
+            <mat-select [formControl]="posts" multiple>
+              <mat-option *ngFor="let post of postList" [value]="post.title">{{post.title}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-            <button mat-raised-button type="button" value="Events" class="media-button" color="primary">
-                <mat-icon matListIcon aria-hidden="false" aria-label="back">event</mat-icon>
-                Events
-            </button>
+        <div>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Select Events</mat-label>
+            <mat-select [formControl]="events" multiple>
+              <mat-option *ngFor="let event of eventList" [value]="event.title">{{event.title}}</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
 
         <!-- Pinned -->

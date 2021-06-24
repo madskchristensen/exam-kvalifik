@@ -3,7 +3,8 @@ export interface Collection {
   title: string;
   createdAt: string;
   description: string;
-  contentIds?: string[] | null;
+  posts?: string[] | null;
+  events?: string[];
   published: boolean;
   pinned: boolean;
 }

@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Collection } from '../../entities/Collection';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CollectionActions } from 'src/app/store/actions/CollectionActions';
+import { Post } from 'src/app/entities/Post';
+import { Event } from 'src/app/entities/Event';
+import { PostActions } from 'src/app/store/actions/PostActions';
+import { EventActions } from 'src/app/store/actions/EventActions';
+import { NgRedux } from '@angular-redux/store';
+import { AppState } from 'src/app/store/Store';
 
 @Component({
   selector: 'app-newcollection',
@@ -14,17 +20,50 @@ export class NewcollectionComponent implements OnInit {
 
   public newCollectionFormGroup!: FormGroup;
   public collectionToBeCreated!: Collection;
+  
+  // posts
+  posts = new FormControl();
 
-  constructor(private fb: FormBuilder, private router: Router, private toastr: ToastrService, private collectionActions: CollectionActions) { 
-  }
+  // to be filled from collection db. Placeholder atm.
+  postList: Post[] = [];
+
+  // events
+  events = new FormControl();
+
+  // to be filled from collection db. Placeholder atm.
+  eventList: Event[] = [];
+
+  constructor(private fb: FormBuilder, private collectionActions: CollectionActions, private postActions: PostActions, private eventActions: EventActions, private router: Router, private toastr: ToastrService,
+    private ngRedux: NgRedux<AppState>) { }
+
   ngOnInit(): void {
+    
+    // make sure redux has newest posts
+    this.postActions.readPosts();
+
+    // load all collections into collectionList so they can be selected in form
+    this.ngRedux.select(state => state.posts).subscribe(res => {
+
+      this.postList = res!.posts;
+    });
+
+    // make sure redux has newest events
+    this.eventActions.readEvents();
+
+    // load all collections into collectionList so they can be selected in form
+    this.ngRedux.select(state => state.events).subscribe(res => {
+
+      this.eventList = res!.events;
+    });
+
     this.collectionToBeCreated = {} as Collection;
 
     this.newCollectionFormGroup = this.fb.group({
       title: ["", Validators.required],
       description: ["", Validators.required],
       pinned: "",
-      contents: ""
+      posts: "",
+      events: ""
     });
   }
 

@@ -7,6 +7,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgRedux } from '@angular-redux/store';
 import { AppState } from 'src/app/store/Store';
 import { ToastrService } from 'ngx-toastr';
+import { Post } from 'src/app/entities/Post';
+import { Event } from 'src/app/entities/Event';
+import { PostActions } from 'src/app/store/actions/PostActions';
+import { EventActions } from 'src/app/store/actions/EventActions';
 
 @Component({
   selector: 'app-editcollection',
@@ -18,10 +22,41 @@ export class EditcollectionComponent implements OnInit {
   public editCollectionFormGroup!: FormGroup;
   public collectionToBeEdited!: Collection;
 
-  constructor(private fb: FormBuilder, private collectionActions: CollectionActions, private router: Router, private toastr: ToastrService, private route: ActivatedRoute,
+  // posts
+  posts = new FormControl();
+
+  // to be filled from collection db. Placeholder atm.
+  postList: Post[] = [];
+
+  // events
+  events = new FormControl();
+
+  // to be filled from collection db. Placeholder atm.
+  eventList: Event[] = [];
+
+  constructor(private fb: FormBuilder, private collectionActions: CollectionActions, private postActions: PostActions, private eventActions: EventActions, private router: Router, private toastr: ToastrService, private route: ActivatedRoute,
     private ngRedux: NgRedux<AppState>) { }
 
   ngOnInit(): void {
+
+    // make sure redux has newest posts
+    this.postActions.readPosts();
+
+    // load all collections into collectionList so they can be selected in form
+    this.ngRedux.select(state => state.posts).subscribe(res => {
+
+      this.postList = res!.posts;
+    });
+
+    // make sure redux has newest events
+    this.eventActions.readEvents();
+
+    // load all collections into collectionList so they can be selected in form
+    this.ngRedux.select(state => state.events).subscribe(res => {
+
+      this.eventList = res!.events;
+    });
+
     const id: string = this.route.snapshot.paramMap.get('myId') || "";
 
     if (id !== null) {
@@ -36,7 +71,8 @@ export class EditcollectionComponent implements OnInit {
       title: [this.collectionToBeEdited.title, Validators.required],
       description: [this.collectionToBeEdited.description, Validators.required],
       pinned: [this.collectionToBeEdited.pinned],
-      contents: [this.collectionToBeEdited.contentIds]
+      posts: [this.collectionToBeEdited.posts],
+      events: [this.collectionToBeEdited.events]
     });
   }
 
@@ -60,7 +96,8 @@ export class EditcollectionComponent implements OnInit {
         this.collectionToBeEdited.title = this.editCollectionFormGroup.value.title;
         this.collectionToBeEdited.description = this.editCollectionFormGroup.value.description;
         this.collectionToBeEdited.pinned = this.editCollectionFormGroup.value.pinned;
-        this.collectionToBeEdited.contentIds = this.editCollectionFormGroup.value.contents;
+        this.collectionToBeEdited.posts = this.editCollectionFormGroup.value.posts;
+        this.collectionToBeEdited.events = this.editCollectionFormGroup.value.events;
 
         // check if save draft, publish or delete was pressed. As button is pressed the given button will always be the active element
         if (document.activeElement?.getAttribute("name") === "save-button") {
