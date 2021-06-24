@@ -25,6 +25,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { environment } from '../environments/environment';
 
@@ -91,6 +92,7 @@ import { VolunteersComponent } from './components/volunteers/volunteers.componen
         MatDatepickerModule,
         MatProgressSpinnerModule,
         MatCardModule,
+        MatGridListModule,
         ReactiveFormsModule,
         FormsModule,
         MatTableModule,

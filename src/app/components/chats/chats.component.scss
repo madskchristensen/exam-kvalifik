@@ -1,0 +1,58 @@
+#chat-box {
+  height: 40rem;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.half-box {
+  height: 100%;
+  padding: 1rem;
+}
+
+#chat-list {
+  width: 40%;
+  border-right: solid 1px gray;
+}
+
+#chat {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#chat-view {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#chat-input {
+  border-top: solid 1px gray;
+  justify-self: flex-end;
+  height: 4rem;
+  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+}
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+.example-form {
+  width: 100%;
+  padding: 0 1rem 0 1rem;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+#logo {
+  height: 3rem;
+}

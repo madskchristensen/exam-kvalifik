@@ -1,1 +1,40 @@
-<p>chats works!</p>
+<div id="component-header">
+  <h1 id="component-title">Chats</h1>
+</div>
+<div class="dummy-data">
+  <mat-divider></mat-divider>
+  <div id="chat-box">
+    <div id="chat-list" class="half-box">
+      <mat-card
+        ><mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-subtitle>Name of contact</mat-card-subtitle>
+          <mat-card-title>Message preview</mat-card-title>
+        </mat-card-header></mat-card
+      >
+    </div>
+    <div id="chat" class="half-box">
+      <div id="chat-view" class="chat-view-class"><mat-spinner></mat-spinner></div>
+      <div id="chat-input" class="chat-view-class">
+        <img id="logo" src="../../../assets/img/logo.png" alt="Logo" />
+        <form class="example-form">
+          <p>
+            <mat-label class="message-label"
+              >Replying as Alexa Rollins from CBS Outdoor & Adventure</mat-label
+            >
+            <br />
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                id="messageInput"
+                placeholder="Write message"
+                formControlName="message"
+              />
+            </mat-form-field>
+          </p>
+        </form>
+        <mat-icon>send</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>
