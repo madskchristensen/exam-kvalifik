@@ -34,7 +34,7 @@
   height: 4rem;
   padding-top: 2rem;
   display: flex;
-  align-items: center;
+  align-items:center;
 }
 .example-header-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
@@ -43,10 +43,6 @@
 .example-form {
   width: 100%;
   padding: 0 1rem 0 1rem;
-}
-
-.example-full-width {
-  width: 100%;
 }
 
 mat-form-field {
