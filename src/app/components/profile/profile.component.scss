@@ -1,0 +1,55 @@
+#two-cards {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  margin: 0 2rem 0 0;
+}
+.profile-card img {
+  margin: 0 0 1rem 0;
+  height: 10rem;
+}
+
+.upload-btn {
+  text-align: left;
+  width: auto;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.upload-btn div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.div-content {
+  margin: 1rem 0 2rem 0;
+}
+
+form {
+  width: 100%;
+}
+
+#publish-button {
+  width: 25%;
+  height: 3em;
+  font-size: larger;
+  text-align: left;
+  margin-left: 3em;
+  background-color: rgb(0, 175, 108);
+  color: white;
+  border-color: white;
+}
+
+#preview-button {
+  width: 25%;
+  height: 3em;
+  font-size: larger;
+  text-align: left;
+  border-color: black;
+}

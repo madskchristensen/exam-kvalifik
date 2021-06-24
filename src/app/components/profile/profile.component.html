@@ -1,1 +1,98 @@
-<p>profile works!</p>
+<div id="component-header">
+  <h1 id="component-title">CBS Outdoor & Adventure</h1>
+</div>
+<div class="dummy-data">
+  <div id="two-cards" class="div-content">
+    <div class="profile-card">
+      <h3><strong>Logo</strong></h3>
+      <img src="../../../assets/img/logo.png" alt="Logo" />
+
+      <button class="upload-btn" mat-raised-button color="primary">
+        <div>
+          <span>Upload photo</span>
+          <mat-icon>add_circle</mat-icon>
+        </div>
+      </button>
+    </div>
+    <div class="profile-card">
+      <h3><strong>Cover photo</strong></h3>
+      <img src="../../../assets/img/cover-photo.png" alt="Cover photo" />
+
+      <button class="upload-btn" mat-raised-button color="primary">
+        <div>
+          <span>Upload photo</span>
+          <mat-icon>add_circle</mat-icon>
+        </div>
+      </button>
+    </div>
+  </div>
+  <div id="description-form" class="div-content">
+    <h3><strong>About</strong></h3>
+    <p>
+      Write a header and a short text about the organisation. You can add more headers if you need
+      to.
+    </p>
+    <form>
+      <p>
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput id="titleInput" placeholder="Header" formControlName="title" />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline" class="full-width">
+          <textarea
+            matInput
+            id="textInput"
+            placeholder="Body"
+            formControlName="text"
+            rows="14"
+          ></textarea>
+        </mat-form-field>
+      </p>
+      <button class="upload-btn" mat-raised-button color="primary">
+        <div>
+          <span>New Description Block</span>
+        </div>
+      </button>
+    </form>
+  </div>
+  <div id="cantact-form" class="div-content">
+    <h3><strong>Contact information</strong></h3>
+    <form>
+      <p>
+        <mat-label class="bigger-input-label">E-mail</mat-label>
+        <br />
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput id="emailInput" placeholder="E-mail address" formControlName="email" />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-label class="bigger-input-label">Contact person</mat-label>
+        <br />
+        <mat-form-field appearance="outline" class="full-width">
+          <input
+            matInput
+            id="nameInput"
+            placeholder="Name of the contact person"
+            formControlName="name"
+          />
+        </mat-form-field>
+      </p>
+      <div id="final-button-group">
+        <button mat-stroked-button id="preview-button" name="preview-button">
+          Preview
+          <mat-icon matListIcon aria-hidden="false" aria-label="back" class="icon-right"
+            >visibility</mat-icon
+          >
+        </button>
+
+        <button mat-flat-button id="publish-button" name="publish-button">
+          Save & publish profile
+          <mat-icon matListIcon aria-hidden="false" aria-label="back" class="icon-right"
+            >arrow_upward</mat-icon
+          >
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
